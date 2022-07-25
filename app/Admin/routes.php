@@ -49,6 +49,8 @@ Route::group([
     $router->resource('sale-out-orders', 'SaleOutOrderController');
     $router->resource('sale-out-items', 'SaleOutItemController');
     $router->resource('customers', 'CustomerController');
+    $router->resource('pay-method', 'PayMethodController');
+    $router->resource('salesman', 'SalesmanController');
     $router->resource('sale-out-batchs', 'SaleOutBatchController');
     $router->resource('drawees', 'DraweeController');
     $router->resource('tasks', 'TaskController');

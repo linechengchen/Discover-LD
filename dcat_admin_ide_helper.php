@@ -31,17 +31,13 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection icon
      * @property Grid\Column|Collection uri
      * @property Grid\Column|Collection extension
-     * @property Grid\Column|Collection user_id
-     * @property Grid\Column|Collection path
-     * @property Grid\Column|Collection method
-     * @property Grid\Column|Collection ip
-     * @property Grid\Column|Collection input
      * @property Grid\Column|Collection permission_id
      * @property Grid\Column|Collection menu_id
      * @property Grid\Column|Collection slug
      * @property Grid\Column|Collection http_method
      * @property Grid\Column|Collection http_path
      * @property Grid\Column|Collection role_id
+     * @property Grid\Column|Collection user_id
      * @property Grid\Column|Collection value
      * @property Grid\Column|Collection username
      * @property Grid\Column|Collection password
@@ -111,6 +107,10 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection batch_no
      * @property Grid\Column|Collection diff_num
      * @property Grid\Column|Collection sum_cost_price
+     * @property Grid\Column|Collection mould_type_id
+     * @property Grid\Column|Collection mould_number
+     * @property Grid\Column|Collection manufacturer
+     * @property Grid\Column|Collection die_life
      * @property Grid\Column|Collection prefix
      * @property Grid\Column|Collection happen_date
      * @property Grid\Column|Collection email
@@ -182,17 +182,13 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection icon(string $label = null)
      * @method Grid\Column|Collection uri(string $label = null)
      * @method Grid\Column|Collection extension(string $label = null)
-     * @method Grid\Column|Collection user_id(string $label = null)
-     * @method Grid\Column|Collection path(string $label = null)
-     * @method Grid\Column|Collection method(string $label = null)
-     * @method Grid\Column|Collection ip(string $label = null)
-     * @method Grid\Column|Collection input(string $label = null)
      * @method Grid\Column|Collection permission_id(string $label = null)
      * @method Grid\Column|Collection menu_id(string $label = null)
      * @method Grid\Column|Collection slug(string $label = null)
      * @method Grid\Column|Collection http_method(string $label = null)
      * @method Grid\Column|Collection http_path(string $label = null)
      * @method Grid\Column|Collection role_id(string $label = null)
+     * @method Grid\Column|Collection user_id(string $label = null)
      * @method Grid\Column|Collection value(string $label = null)
      * @method Grid\Column|Collection username(string $label = null)
      * @method Grid\Column|Collection password(string $label = null)
@@ -262,6 +258,10 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection batch_no(string $label = null)
      * @method Grid\Column|Collection diff_num(string $label = null)
      * @method Grid\Column|Collection sum_cost_price(string $label = null)
+     * @method Grid\Column|Collection mould_type_id(string $label = null)
+     * @method Grid\Column|Collection mould_number(string $label = null)
+     * @method Grid\Column|Collection manufacturer(string $label = null)
+     * @method Grid\Column|Collection die_life(string $label = null)
      * @method Grid\Column|Collection prefix(string $label = null)
      * @method Grid\Column|Collection happen_date(string $label = null)
      * @method Grid\Column|Collection email(string $label = null)
@@ -338,17 +338,13 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection icon
      * @property Show\Field|Collection uri
      * @property Show\Field|Collection extension
-     * @property Show\Field|Collection user_id
-     * @property Show\Field|Collection path
-     * @property Show\Field|Collection method
-     * @property Show\Field|Collection ip
-     * @property Show\Field|Collection input
      * @property Show\Field|Collection permission_id
      * @property Show\Field|Collection menu_id
      * @property Show\Field|Collection slug
      * @property Show\Field|Collection http_method
      * @property Show\Field|Collection http_path
      * @property Show\Field|Collection role_id
+     * @property Show\Field|Collection user_id
      * @property Show\Field|Collection value
      * @property Show\Field|Collection username
      * @property Show\Field|Collection password
@@ -418,6 +414,10 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection batch_no
      * @property Show\Field|Collection diff_num
      * @property Show\Field|Collection sum_cost_price
+     * @property Show\Field|Collection mould_type_id
+     * @property Show\Field|Collection mould_number
+     * @property Show\Field|Collection manufacturer
+     * @property Show\Field|Collection die_life
      * @property Show\Field|Collection prefix
      * @property Show\Field|Collection happen_date
      * @property Show\Field|Collection email
@@ -489,17 +489,13 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection icon(string $label = null)
      * @method Show\Field|Collection uri(string $label = null)
      * @method Show\Field|Collection extension(string $label = null)
-     * @method Show\Field|Collection user_id(string $label = null)
-     * @method Show\Field|Collection path(string $label = null)
-     * @method Show\Field|Collection method(string $label = null)
-     * @method Show\Field|Collection ip(string $label = null)
-     * @method Show\Field|Collection input(string $label = null)
      * @method Show\Field|Collection permission_id(string $label = null)
      * @method Show\Field|Collection menu_id(string $label = null)
      * @method Show\Field|Collection slug(string $label = null)
      * @method Show\Field|Collection http_method(string $label = null)
      * @method Show\Field|Collection http_path(string $label = null)
      * @method Show\Field|Collection role_id(string $label = null)
+     * @method Show\Field|Collection user_id(string $label = null)
      * @method Show\Field|Collection value(string $label = null)
      * @method Show\Field|Collection username(string $label = null)
      * @method Show\Field|Collection password(string $label = null)
@@ -569,6 +565,10 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection batch_no(string $label = null)
      * @method Show\Field|Collection diff_num(string $label = null)
      * @method Show\Field|Collection sum_cost_price(string $label = null)
+     * @method Show\Field|Collection mould_type_id(string $label = null)
+     * @method Show\Field|Collection mould_number(string $label = null)
+     * @method Show\Field|Collection manufacturer(string $label = null)
+     * @method Show\Field|Collection die_life(string $label = null)
      * @method Show\Field|Collection prefix(string $label = null)
      * @method Show\Field|Collection happen_date(string $label = null)
      * @method Show\Field|Collection email(string $label = null)

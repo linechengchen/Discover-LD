@@ -122,5 +122,6 @@ class AppServiceProvider extends ServiceProvider
         AccountantDateModel::observe(AccountantDateObserver::class);
         StatementItemModel::observe(StatementItemObserver::class);
         StatementOrderModel::observe([StatementOrderObserver::class, OrderNoCreatedObserver::class]);
+        \Schema::defaultStringLength(191);
     }
 }
