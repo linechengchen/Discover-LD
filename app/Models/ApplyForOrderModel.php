@@ -58,7 +58,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class ApplyForOrderModel extends BaseModel
 {
-    use HasDateTimeFormatter;
+   use HasDateTimeFormatter;
     use SoftDeletes;
 
     protected $table = 'apply_for_order';

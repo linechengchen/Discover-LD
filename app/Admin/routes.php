@@ -24,6 +24,7 @@ Route::group([
     'middleware'    => config('admin.route.middleware'),
 ], function (Router $router) {
     $router->get('/', 'HomeController@index');
+
     $router->get('api/get-attr-value', 'ApiController@getAttrValue')->name('api.attrvalue.find');
     $router->get('api/get-product-unit', 'ApiController@getUnitByProductId')->name('api.productunit.find');
     $router->get('api/get-product', 'ApiController@getProductInfo')->name('api.product.find');
@@ -51,6 +52,7 @@ Route::group([
     $router->resource('customers', 'CustomerController');
     $router->resource('pay-method', 'PayMethodController');
     $router->resource('salesman', 'SalesmanController');
+
     $router->resource('sale-out-batchs', 'SaleOutBatchController');
     $router->resource('drawees', 'DraweeController');
     $router->resource('tasks', 'TaskController');
@@ -74,6 +76,9 @@ Route::group([
     $router->post('month-settlements/settlement', 'MonthSettlementController@settlement')->name('month-settlements.settlement');
     $router->resource('statement-orders', 'StatementOrderController');
     $router->resource('statement-items', 'StatementItemController');
+    //模具管理
+    $router->resource('mould','MouldController');
+    $router->resource('mould-type','MouldTypeController');
 
     $router->resource('demands', 'DemandController');
     $router->resource('inventorys', "InventoryController");

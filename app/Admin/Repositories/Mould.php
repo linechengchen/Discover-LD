@@ -2,7 +2,7 @@
 
 namespace App\Admin\Repositories;
 
-use App\Models\Mould as Model;
+use App\Models\MouldModel as Model;
 use Dcat\Admin\Repositories\EloquentRepository;
 
 class Mould extends EloquentRepository

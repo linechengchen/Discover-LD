@@ -6,11 +6,11 @@ use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class PayMethod extends Model
+class PayMethodModel extends Model
 {
 	use HasDateTimeFormatter;
     use SoftDeletes;
 
     protected $table = 'pay_method';
-    
+
 }

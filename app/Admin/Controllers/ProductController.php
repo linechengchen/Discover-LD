@@ -39,7 +39,7 @@ class ProductController extends AdminController
             $grid->column('name')->emp();
             $grid->column('py_code')->emp();
             $grid->column('type', '类型')->using(ProductModel::TYPE);
-            $grid->column('unit.name', '单位')->emp();
+            $grid->column('unit.name', '单位');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
             $grid->showColumnSelector();
@@ -105,7 +105,7 @@ class ProductController extends AdminController
 
             $form->row(function (Form\Row $row) use ($form) {
                 $row->hasMany('product_attr', '', function (Form\NestedForm $table) {
-                    $table->select('attr_id', '属性')->options(AttrModel::pluck('name', 'id'))->required()->load('attr_value_ids', route('api.attrvalue.find'));
+                    $table->select('attr_id', '属性')->options(AttrModel::pluck('name', 'id'))->required()->load('attr_value_ids', route('dcat.admin.api.attrvalue.find'));
                     $table->multipleSelect('attr_value_ids', '属性值')->options();
                 })->width(12)->enableHorizontal()->useTable();
             });

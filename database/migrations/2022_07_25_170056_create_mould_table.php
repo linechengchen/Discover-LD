@@ -17,7 +17,7 @@ class CreateMouldTable extends Migration
             $table->increments('id');
             $table->string('name')->unique()->default('');
             $table->integer('mould_type_id');
-            $table->string('mould_number')->default('');
+            $table->string('mould_no')->default('');
             $table->string('manufacturer')->default('');
             $table->integer('customer_id');
             $table->string('die_life')->default('');

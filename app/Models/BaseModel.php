@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class BaseModel extends Model
 {
-    use HasDateTimeFormatter;
+   use HasDateTimeFormatter;
 
     protected $guarded = ['id'];
 

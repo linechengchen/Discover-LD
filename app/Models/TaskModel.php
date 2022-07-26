@@ -78,7 +78,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class TaskModel extends BaseModel
 {
-    use HasDateTimeFormatter;
+   use HasDateTimeFormatter;
     use SoftDeletes;
     use HasStandard;
 

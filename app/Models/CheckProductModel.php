@@ -85,7 +85,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class CheckProductModel extends BaseModel
 {
-    use HasDateTimeFormatter;
+   use HasDateTimeFormatter;
     use SoftDeletes;
     use HasStandard;
     protected $appends = ['standard_str'];

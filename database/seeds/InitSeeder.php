@@ -11,7 +11,7 @@
  * // | Author: yxx <1365831278@qq.com>
  * // +----------------------------------------------------------------------
  */
-
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Dcat\Admin\Models\Menu;
 use Dcat\Admin\Models\Role;
@@ -475,6 +475,22 @@ class InitSeeder extends Seeder
                 'title'         => '模具设计',
                 'icon'          => 'feather icon-cpu',
                 'uri'           => '',
+                'created_at'    => $createdAt,
+            ],
+            [
+                'parent_id'     => 43,
+                'order'         => 41,
+                'title'         => '模具类型',
+                'icon'          => 'feather icon-cpu',
+                'uri'           => 'mould-type',
+                'created_at'    => $createdAt,
+            ],
+            [
+                'parent_id'     => 43,
+                'order'         => 41,
+                'title'         => '模具档案',
+                'icon'          => 'feather icon-cpu',
+                'uri'           => 'mould',
                 'created_at'    => $createdAt,
             ],
             [

@@ -2,7 +2,7 @@
 
 namespace App\Admin\Repositories;
 
-use App\Models\PayMethod as Model;
+use App\Models\PayMethodModel as Model;
 use Dcat\Admin\Repositories\EloquentRepository;
 
 class PayMethod extends EloquentRepository
