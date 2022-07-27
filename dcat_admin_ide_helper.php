@@ -108,7 +108,7 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection diff_num
      * @property Grid\Column|Collection sum_cost_price
      * @property Grid\Column|Collection mould_type_id
-     * @property Grid\Column|Collection mould_number
+     * @property Grid\Column|Collection mould_no
      * @property Grid\Column|Collection manufacturer
      * @property Grid\Column|Collection die_life
      * @property Grid\Column|Collection prefix
@@ -149,6 +149,7 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection balance_num
      * @property Grid\Column|Collection inventory_num
      * @property Grid\Column|Collection inventory_diff_num
+     * @property Grid\Column|Collection ddd
      * @property Grid\Column|Collection plan_num
      * @property Grid\Column|Collection finish_num
      * @property Grid\Column|Collection craft_id
@@ -259,7 +260,7 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection diff_num(string $label = null)
      * @method Grid\Column|Collection sum_cost_price(string $label = null)
      * @method Grid\Column|Collection mould_type_id(string $label = null)
-     * @method Grid\Column|Collection mould_number(string $label = null)
+     * @method Grid\Column|Collection mould_no(string $label = null)
      * @method Grid\Column|Collection manufacturer(string $label = null)
      * @method Grid\Column|Collection die_life(string $label = null)
      * @method Grid\Column|Collection prefix(string $label = null)
@@ -300,6 +301,7 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection balance_num(string $label = null)
      * @method Grid\Column|Collection inventory_num(string $label = null)
      * @method Grid\Column|Collection inventory_diff_num(string $label = null)
+     * @method Grid\Column|Collection ddd(string $label = null)
      * @method Grid\Column|Collection plan_num(string $label = null)
      * @method Grid\Column|Collection finish_num(string $label = null)
      * @method Grid\Column|Collection craft_id(string $label = null)
@@ -415,7 +417,7 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection diff_num
      * @property Show\Field|Collection sum_cost_price
      * @property Show\Field|Collection mould_type_id
-     * @property Show\Field|Collection mould_number
+     * @property Show\Field|Collection mould_no
      * @property Show\Field|Collection manufacturer
      * @property Show\Field|Collection die_life
      * @property Show\Field|Collection prefix
@@ -456,6 +458,7 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection balance_num
      * @property Show\Field|Collection inventory_num
      * @property Show\Field|Collection inventory_diff_num
+     * @property Show\Field|Collection ddd
      * @property Show\Field|Collection plan_num
      * @property Show\Field|Collection finish_num
      * @property Show\Field|Collection craft_id
@@ -566,7 +569,7 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection diff_num(string $label = null)
      * @method Show\Field|Collection sum_cost_price(string $label = null)
      * @method Show\Field|Collection mould_type_id(string $label = null)
-     * @method Show\Field|Collection mould_number(string $label = null)
+     * @method Show\Field|Collection mould_no(string $label = null)
      * @method Show\Field|Collection manufacturer(string $label = null)
      * @method Show\Field|Collection die_life(string $label = null)
      * @method Show\Field|Collection prefix(string $label = null)
@@ -607,6 +610,7 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection balance_num(string $label = null)
      * @method Show\Field|Collection inventory_num(string $label = null)
      * @method Show\Field|Collection inventory_diff_num(string $label = null)
+     * @method Show\Field|Collection ddd(string $label = null)
      * @method Show\Field|Collection plan_num(string $label = null)
      * @method Show\Field|Collection finish_num(string $label = null)
      * @method Show\Field|Collection craft_id(string $label = null)

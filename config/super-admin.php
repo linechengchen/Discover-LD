@@ -1,12 +1,7 @@
 <?php
 
 return [
-    //    多后台
-    'multi_app' => [
-        // 与新应用的配置文件名称一致
-        // 设置为true启用，false则是停用
-        'super-admin' => true,
-    ],
+
     /*
     |--------------------------------------------------------------------------
     | dcat-admin name
@@ -16,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => 'Dcat Admin',
+    'name' => 'Super Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -50,14 +45,14 @@ return [
     'favicon' => null,
 
     /*
-     |--------------------------------------------------------------------------
-     | User default avatar
-     |--------------------------------------------------------------------------
-     |
-     | Set a default avatar for newly created users.
-     |
-     */
-    'default_avatar' => '@admin/images/default-avatar.jpg',
+	 |--------------------------------------------------------------------------
+	 | User default avatar
+	 |--------------------------------------------------------------------------
+	 |
+	 | Set a default avatar for newly created users.
+	 |
+	 */
+	'default_avatar' => '@admin/images/default-avatar.jpg',
 
     /*
     |--------------------------------------------------------------------------
@@ -72,13 +67,11 @@ return [
     'route' => [
         'domain' => env('ADMIN_ROUTE_DOMAIN'),
 
-        'prefix' => env('ADMIN_ROUTE_PREFIX', 'admin'),
+        'prefix' => 'super-admin',
 
-        'namespace' => 'App\\Admin\\Controllers',
+        'namespace' => 'App\\SuperAdmin\\Controllers',
 
         'middleware' => ['web', 'admin'],
-
-        'enable_session_middleware' => false,
     ],
 
     /*
@@ -91,7 +84,7 @@ return [
     | be set before running `artisan admin::install` to take effect.
     |
     */
-    'directory' => app_path('Admin'),
+    'directory' => app_path('SuperAdmin'),
 
     /*
     |--------------------------------------------------------------------------
@@ -135,19 +128,19 @@ return [
     'auth' => [
         'enable' => true,
 
-        'controller' => App\Admin\Controllers\AuthController::class,
+        'controller' => App\SuperAdmin\Controllers\AuthController::class,
 
-        'guard' => 'admin',
+        'guard' => 'super-admin',
 
         'guards' => [
-            'admin' => [
+            'super-admin' => [
                 'driver'   => 'session',
-                'provider' => 'admin',
+                'provider' => 'super-admin',
             ],
         ],
 
         'providers' => [
-            'admin' => [
+            'super-admin' => [
                 'driver' => 'eloquent',
                 'model'  => Dcat\Admin\Models\Administrator::class,
             ],
@@ -163,7 +156,6 @@ return [
             'auth/logout',
         ],
 
-        'enable_session_middleware' => false,
     ],
 
     /*
@@ -228,6 +220,7 @@ return [
             'auth/logout',
             'auth/setting',
         ],
+
     ],
 
     /*
@@ -252,7 +245,7 @@ return [
         // Whether enable permission bind to menu.
         'permission_bind_menu' => true,
 
-        'default_icon' => 'feather icon-circle',
+		'default_icon' => 'feather icon-circle',
     ],
 
     /*
@@ -274,7 +267,6 @@ return [
             'image' => 'images',
             'file'  => 'files',
         ],
-
     ],
 
     /*
@@ -291,29 +283,29 @@ return [
         'connection' => '',
 
         // User tables and model.
-        'users_table' => 'admin_users',
-        'users_model' => Dcat\Admin\Models\Administrator::class,
+        'users_table' => 'super_admin_users',
+        'users_model' => Dcat\Admin\Models\SuperAdministrator::class,
 
         // Role table and model.
-        'roles_table' => 'admin_roles',
-        'roles_model' => Dcat\Admin\Models\Role::class,
+        'roles_table' => 'super_admin_roles',
+        'roles_model' => Dcat\Admin\Models\SuperRole::class,
 
         // Permission table and model.
         'permissions_table' => 'admin_permissions',
-        'permissions_model' => Dcat\Admin\Models\Permission::class,
+        'permissions_model' => Dcat\Admin\Models\SuperPermission::class,
 
         // Menu table and model.
-        'menu_table' => 'admin_menu',
-        'menu_model' => Dcat\Admin\Models\Menu::class,
+        'menu_table' => 'super_admin_menu',
+        'menu_model' => Dcat\Admin\Models\SuperMenu::class,
 
         // Pivot table for table above.
-        'role_users_table'       => 'admin_role_users',
-        'role_permissions_table' => 'admin_role_permissions',
-        'role_menu_table'        => 'admin_role_menu',
-        'permission_menu_table'  => 'admin_permission_menu',
-        'settings_table'         => 'admin_settings',
-        'extensions_table'       => 'admin_extensions',
-        'extension_histories_table' => 'admin_extension_histories',
+        'role_users_table'       => 'super_admin_role_users',
+        'role_permissions_table' => 'super_admin_role_permissions',
+        'role_menu_table'        => 'super_admin_role_menu',
+        'permission_menu_table'  => 'super_admin_permission_menu',
+        'settings_table'         => 'super_admin_settings',
+		'extensions_table'       => 'super_admin_extensions',
+		'extension_histories_table' => 'super_admin_extension_histories',
     ],
 
     /*
@@ -327,7 +319,7 @@ return [
         // default, blue, blue-light, green
         'color' => 'default',
 
-        // sidebar-separate
+		// sidebar-separate
         'body_class' => [],
 
         'horizontal_menu' => false,
@@ -335,7 +327,7 @@ return [
         'sidebar_collapsed' => false,
 
         // light, primary, dark
-        'sidebar_style' => 'light',
+		'sidebar_style' => 'light',
 
         'dark_mode_switch' => false,
 
@@ -359,15 +351,4 @@ return [
     | Whether enable default breadcrumb for every page content.
     */
     'enable_default_breadcrumb' => true,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Extension
-    |--------------------------------------------------------------------------
-    */
-    'extension' => [
-        // When you use command `php artisan admin:ext-make` to generate extensions,
-        // the extension files will be generated in this directory.
-        'dir' => base_path('dcat-admin-extensions'),
-    ],
 ];
