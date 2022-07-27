@@ -291,7 +291,7 @@ return [
         'roles_model' => Dcat\Admin\Models\SuperRole::class,
 
         // Permission table and model.
-        'permissions_table' => 'admin_permissions',
+        'permissions_table' => 'super_admin_permissions',
         'permissions_model' => Dcat\Admin\Models\SuperPermission::class,
 
         // Menu table and model.
