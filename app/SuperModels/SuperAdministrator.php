@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\SuperModels;
 
 use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Dcat\Admin\Traits\HasPermissions;

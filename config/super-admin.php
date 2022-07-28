@@ -1,5 +1,10 @@
 <?php
 
+use App\SuperModels\SuperAdministrator;
+use App\SuperModels\SuperMenu;
+use App\SuperModels\SuperPermission;
+use App\SuperModels\SuperRole;
+
 return [
 
     /*
@@ -284,19 +289,19 @@ return [
 
         // User tables and model.
         'users_table' => 'super_admin_users',
-        'users_model' => Dcat\Admin\Models\SuperAdministrator::class,
+        'users_model' => SuperAdministrator::class,
 
         // Role table and model.
         'roles_table' => 'super_admin_roles',
-        'roles_model' => Dcat\Admin\Models\SuperRole::class,
+        'roles_model' => SuperRole::class,
 
         // Permission table and model.
         'permissions_table' => 'super_admin_permissions',
-        'permissions_model' => Dcat\Admin\Models\SuperPermission::class,
+        'permissions_model' => SuperPermission::class,
 
         // Menu table and model.
         'menu_table' => 'super_admin_menu',
-        'menu_model' => Dcat\Admin\Models\SuperMenu::class,
+        'menu_model' => SuperMenu::class,
 
         // Pivot table for table above.
         'role_users_table'       => 'super_admin_role_users',

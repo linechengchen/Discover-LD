@@ -2,7 +2,7 @@
 
 namespace App\Admin\Repositories;
 
-use App\Models\SuperAdminPermissionMenuModel as Model;
+use App\SuperModels\SuperAdminPermissionMenuModel as Model;
 use Dcat\Admin\Repositories\EloquentRepository;
 
 class SuperAdminPermissionMenu extends EloquentRepository

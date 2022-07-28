@@ -89,6 +89,15 @@ class CreateSuperAdminTables extends Migration
             $table->unique(['permission_id', 'menu_id']);
             $table->timestamps();
         });
+        Schema::create('super_customer', function (Blueprint $table) {
+            $table->integerIncrements('id');
+            $table->string('name', 128)->default('')->comment('属性名称');
+            $table->string('link', 64)->default('')->comment('联系人');
+            $table->string('phone', 11)->default('')->comment('手机号码');
+            $table->string('other', 500)->default('')->comment('备注');
+            $table->softDeletes();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -106,5 +115,6 @@ class CreateSuperAdminTables extends Migration
         Schema::dropIfExists($this->config('database.role_permissions_table'));
         Schema::dropIfExists($this->config('database.role_menu_table'));
         Schema::dropIfExists($this->config('database.permission_menu_table'));
+        Schema::dropIfExists('super_customer');
     }
 }

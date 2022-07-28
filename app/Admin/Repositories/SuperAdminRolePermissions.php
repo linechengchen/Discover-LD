@@ -2,7 +2,7 @@
 
 namespace App\Admin\Repositories;
 
-use App\Models\SuperAdminRolePermissionsModel as Model;
+use App\SuperModels\SuperAdminRolePermissionsModel as Model;
 use Dcat\Admin\Repositories\EloquentRepository;
 
 class SuperAdminRolePermissions extends EloquentRepository
