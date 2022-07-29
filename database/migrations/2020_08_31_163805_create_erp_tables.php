@@ -32,6 +32,8 @@ class CreateErpTables extends Migration
             $table->string('item_no', 32)->default('')->comment('产品编号');
             $table->unsignedSmallInteger('unit_id')->default(0)->comment('单位');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -46,6 +48,8 @@ class CreateErpTables extends Migration
             $table->integerIncrements('id');
             $table->string('name', 64)->default('')->comment('属性名称');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
         Schema::create('attr_value', function (Blueprint $table) {
@@ -53,6 +57,9 @@ class CreateErpTables extends Migration
             $table->unsignedInteger('attr_id')->default(0)->comment('属性id');
             $table->string('name', 64)->default('')->comment('属性值名称');
             $table->softDeletes();
+
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -65,6 +72,8 @@ class CreateErpTables extends Migration
             $table->integerIncrements('id');
             $table->string('name', 64)->default('')->comment('单位名称');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
         Schema::create('purchase_check', function (Blueprint $table) {
@@ -82,6 +91,8 @@ class CreateErpTables extends Migration
             $table->unsignedInteger('user_id')->default(0)->comment('创建订单用户');
             $table->timestamp('finished_at')->nullable()->comment('订单完成时间');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
         Schema::create('purchase_item', function (Blueprint $table) {
@@ -91,6 +102,8 @@ class CreateErpTables extends Migration
             $table->unsignedInteger('should_num')->default(0)->comment('采购数量');
             $table->unsignedInteger('actual_num')->default(0)->comment('入库数量');
             $table->decimal('price', 10, 2)->default(0)->comment('价格');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
         Schema::create('supplier', function (Blueprint $table) {
@@ -101,6 +114,8 @@ class CreateErpTables extends Migration
             $table->string('phone')->default('')->comment('手机号');
             $table->string('other')->default('')->comment('备注');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -108,6 +123,8 @@ class CreateErpTables extends Migration
             $table->integerIncrements('id');
             $table->string('name', 64)->default('')->comment('位置名称');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -120,6 +137,8 @@ class CreateErpTables extends Migration
             $table->unsignedInteger('user_id')->default(0)->comment('创建订单用户');
             $table->timestamp('finished_at')->nullable()->comment('订单完成时间');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -132,6 +151,8 @@ class CreateErpTables extends Migration
             $table->decimal('price', 10, 2)->default(0)->comment('价格');
             $table->unsignedInteger('position_id')->default(0)->comment('位置id');
             $table->string('batch_no', 32)->default('')->comment('批次号');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -139,6 +160,8 @@ class CreateErpTables extends Migration
             $table->integerIncrements('id');
             $table->unsignedInteger('sku_id')->default(0)->comment('产品sku_id');
             $table->integer('num')->default(0)->comment('产品库存');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -148,6 +171,8 @@ class CreateErpTables extends Migration
             $table->integer('num')->default(0)->comment('产品库存');
             $table->unsignedInteger('position_id')->default(0)->comment('仓库位置');
             $table->string('batch_no', 32)->default('')->comment('批次号');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
         Schema::create('customer', function (Blueprint $table) {
@@ -158,6 +183,8 @@ class CreateErpTables extends Migration
             $table->string('phone', 11)->default('')->comment('手机号码');
             $table->string('other', 500)->default('')->comment('备注');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -167,12 +194,16 @@ class CreateErpTables extends Migration
             $table->string('address')->default('')->comment('地址');
             $table->string('other')->default('')->comment('备注');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
         Schema::create('drawee', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->string('name', 128)->default('')->comment('付款人名称');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -191,6 +222,8 @@ class CreateErpTables extends Migration
             $table->unsignedInteger('user_id')->default(0)->comment('创建订单用户');
             $table->timestamp('finished_at')->nullable()->comment('订单完成时间');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -203,6 +236,8 @@ class CreateErpTables extends Migration
             $table->decimal('price', 10, 2)->default(0)->comment('价格');
             $table->unsignedInteger('position_id')->default(0)->comment('位置id');
             $table->string('batch_no', 32)->default('')->comment('批次号');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -215,6 +250,8 @@ class CreateErpTables extends Migration
             $table->unsignedInteger('user_id')->default(0)->comment('创建订单用户');
             $table->timestamp('finished_at')->nullable()->comment('订单完成时间');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -227,6 +264,8 @@ class CreateErpTables extends Migration
             $table->decimal('price', 10, 2)->default(0)->comment('价格');
             $table->unsignedInteger('position_id')->default(0)->comment('位置id');
             $table->string('batch_no', 32)->default('')->comment('批次号');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -239,6 +278,8 @@ class CreateErpTables extends Migration
             $table->unsignedInteger('user_id')->default(0)->comment('创建订单用户');
             $table->timestamp('finished_at')->nullable()->comment('订单完成时间');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -252,6 +293,8 @@ class CreateErpTables extends Migration
             $table->decimal('price', 10, 2)->default(0)->comment('价格');
             $table->unsignedInteger('position_id')->default(0)->comment('位置id');
             $table->string('batch_no', 32)->default('')->comment('批次号');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
     }

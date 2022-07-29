@@ -32,6 +32,8 @@ class CreateInventoryItemTable extends Migration
             $table->decimal('should_num')->default('0')->comment('库存数量');
             $table->decimal('actual_num')->default('0')->comment('实盘数量');
             $table->decimal('diff_num')->default('0')->comment('盈亏数量');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

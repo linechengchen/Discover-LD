@@ -30,6 +30,8 @@ class CreateAccountantDateItemTable extends Migration
             $table->unsignedInteger('accountant_date_id')->default('0')->comment('关联id');
             $table->timestamp('start_at')->nullable()->comment('开始日期');
             $table->timestamp('end_at')->nullable()->comment('截止日期');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
     }

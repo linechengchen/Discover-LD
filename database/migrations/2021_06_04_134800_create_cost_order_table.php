@@ -36,6 +36,8 @@ class CreateCostOrderTable extends Migration
             $table->unsignedTinyInteger('review_status')->default(0);
             $table->unsignedInteger('accountant_item_id')->default(0);
             $table->unsignedDecimal('total_amount')->default(0.00);
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

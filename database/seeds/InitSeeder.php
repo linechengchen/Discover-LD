@@ -13,6 +13,7 @@
  */
 namespace Database\Seeders;
 use App\SuperModels\SuperAdministrator;
+use App\SuperModels\SuperCustomerModel;
 use App\SuperModels\SuperMenu;
 use App\SuperModels\SuperPermission;
 use App\SuperModels\SuperRole;
@@ -535,6 +536,7 @@ class InitSeeder extends Seeder
         // create a user.
 
         SuperRole::truncate();
+        SuperCustomerModel::truncate();
         SuperMenu::truncate();
         SuperPermission::truncate();
         SuperAdministrator::truncate();

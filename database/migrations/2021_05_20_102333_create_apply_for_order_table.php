@@ -33,6 +33,8 @@ class CreateApplyForOrderTable extends Migration
             $table->unsignedInteger('apply_id')->default(0)->comment('审核人');
             $table->text('other')->nullable()->comment('备注');
             $table->unsignedTinyInteger('review_status')->default(0)->comment('状态');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

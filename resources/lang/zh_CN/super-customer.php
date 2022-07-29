@@ -13,11 +13,16 @@
  */
 
 return [
-    'error_loading'    => '無法載入結果',
-    'input_too_long'   => '請刪除:num個字符',
-    'input_too_short'  => '請輸入至少:num個字符',
-    'loading_more'     => '載入更多結果...',
-    'maximum_selected' => '最多只能選擇:num個項目',
-    'no_results'       => '未找到結果',
-    'searching'        => '搜尋中...',
+    'labels' => [
+        'SuperCustomer' => '客户名单',
+    ],
+    'fields' => [
+        'link' => '联系人',
+        'name' => '客户公司名称',
+        'other' => '备注',
+        'pay_method' => '支付方式',
+        'phone' => '手机号码',
+    ],
+    'options' => [
+    ],
 ];

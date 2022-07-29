@@ -34,6 +34,8 @@ class CreateCostItemTable extends Migration
             $table->unsignedDecimal('actual_amount')->default(0)->comment('实付金额');
             $table->unsignedInteger('with_id')->default(0)->comment('相关订单');
             $table->string('other')->default('')->comment('备注');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

@@ -35,6 +35,8 @@ class CreateStatementItemTable extends Migration
             $table->unsignedDecimal('discount_amount')->default(0);
             $table->unsignedDecimal('already_actual_amount')->default(0);
             $table->unsignedDecimal('already_discount_amount')->default(0);
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
     }

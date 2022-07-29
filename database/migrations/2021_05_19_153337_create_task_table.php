@@ -38,6 +38,8 @@ class CreateTaskTable extends Migration
             $table->text('other')->nullable()->comment('备注');
             $table->unsignedInteger('user_id')->default(0)->comment('任务创建人');
             $table->unsignedInteger('operator')->default(0)->comment('操作人员');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

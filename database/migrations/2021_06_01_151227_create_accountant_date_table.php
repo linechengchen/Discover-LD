@@ -29,6 +29,8 @@ class CreateAccountantDateTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('year')->default(0)->comment('会计年');
             $table->unsignedInteger('day')->default(0)->comment("结算天");
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
     }

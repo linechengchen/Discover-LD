@@ -16,6 +16,8 @@ class CreatePayMethodTable extends Migration
         Schema::create('pay_method', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->default('')->comment('付款方式');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

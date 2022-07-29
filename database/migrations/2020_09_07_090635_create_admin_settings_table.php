@@ -26,6 +26,8 @@ class CreateAdminSettingsTable extends Migration
         Schema::create($this->config('database.settings_table') ?: 'admin_settings', function (Blueprint $table) {
             $table->string('slug', 100)->primary();
             $table->longText('value');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
     }

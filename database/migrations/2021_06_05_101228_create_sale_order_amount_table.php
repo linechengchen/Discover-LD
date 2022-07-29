@@ -34,6 +34,8 @@ class CreateSaleOrderAmountTable extends Migration
             $table->unsignedDecimal('actual_amount')->default(0)->comment('结算金额');
             $table->unsignedInteger('accountant_id')->default(0)->comment('结算年月');
             $table->timestamp('settlement_at')->nullable()->comment('结算日期');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

@@ -16,6 +16,8 @@ class CreateMouldTypeTable extends Migration
         Schema::create('mould_type', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique()->default('')->comment('模具类型');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

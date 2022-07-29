@@ -42,6 +42,8 @@ class CreateStockHistoryTable extends Migration
             $table->integer('balance_num')->default(0)->comment('结余库存');
             $table->integer('user_id')->default(0)->comment('操作用户');
             $table->string('batch_no')->default('')->comment('批次号');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
     }

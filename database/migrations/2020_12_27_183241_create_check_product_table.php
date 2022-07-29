@@ -47,6 +47,8 @@ class CreateCheckProductTable extends Migration
             $table->decimal('duck_ratio', 10, 2)->default(0.00)->comment('鸭比');
             $table->unsignedInteger('user_id')->default(0)->comment('质检员');
             $table->softDeletes();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
     }

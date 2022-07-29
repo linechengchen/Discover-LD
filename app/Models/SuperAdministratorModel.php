@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\URL;
  *
  * @property Role[] $roles
  */
-class SuperAdministrator extends Model implements AuthenticatableContract
+class SuperAdministratorModel extends Model implements AuthenticatableContract
 {
     protected $table = 'super_admin_users';
     use Authenticatable,

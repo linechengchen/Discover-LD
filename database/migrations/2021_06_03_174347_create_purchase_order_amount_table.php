@@ -33,6 +33,8 @@ class CreatePurchaseOrderAmountTable extends Migration
             $table->unsignedDecimal('should_amount')->default(0)->comment('费用金额');
             $table->unsignedDecimal('actual_amount')->default(0)->comment('结算金额');
             $table->unsignedInteger('accountant_id')->default(0)->comment('结算年月');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
     }

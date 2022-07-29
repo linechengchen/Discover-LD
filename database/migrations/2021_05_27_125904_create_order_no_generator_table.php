@@ -31,6 +31,8 @@ class CreateOrderNoGeneratorTable extends Migration
             $table->date('happen_date')->comment('日期');
             $table->unsignedInteger('number')->comment('序号');
             $table->unique(['prefix', 'happen_date']);
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
     }

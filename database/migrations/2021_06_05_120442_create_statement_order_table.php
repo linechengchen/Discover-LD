@@ -37,6 +37,8 @@ class CreateStatementOrderTable extends Migration
             $table->decimal('should_amount')->default(0)->comment('应付金额');
             $table->decimal('actual_amount')->default(0)->comment('实付金额');
             $table->decimal('discount_amount')->default(0)->comment('优惠金额');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

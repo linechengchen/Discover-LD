@@ -28,6 +28,8 @@ class CreateCraftTable extends Migration
         Schema::create('craft', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->default('')->comment('名称');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

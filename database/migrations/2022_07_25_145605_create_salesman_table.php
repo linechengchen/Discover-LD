@@ -18,6 +18,8 @@ class CreateSalesmanTable extends Migration
             $table->string('name')->default('')->comment('员工名称');
             $table->string('phone')->default('')->comment('电话号码');
             $table->string('address')->default('')->comment('地址');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

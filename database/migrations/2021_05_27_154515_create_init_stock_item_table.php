@@ -35,6 +35,8 @@ class CreateInitStockItemTable extends Migration
             $table->decimal('cost_price')->default('0')->comment('成本价格');
             $table->unsignedInteger('position_id')->default('0')->comment('库位');
             $table->string('batch_no')->default('')->comment('批次号');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

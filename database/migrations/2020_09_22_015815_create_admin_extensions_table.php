@@ -29,6 +29,8 @@ class CreateAdminExtensionsTable extends Migration
             $table->string('version', 20)->default('');
             $table->tinyInteger('is_enabled')->default(0);
             $table->text('options')->nullable();
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
 
             $table->engine = 'InnoDB';
@@ -42,6 +44,8 @@ class CreateAdminExtensionsTable extends Migration
             $table->text('detail')->nullable();
 
             $table->index('name');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
 
             $table->engine = 'InnoDB';

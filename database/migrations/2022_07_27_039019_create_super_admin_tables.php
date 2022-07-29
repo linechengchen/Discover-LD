@@ -30,6 +30,7 @@ class CreateSuperAdminTables extends Migration
             $table->string('name');
             $table->string('avatar')->nullable();
             $table->string('remember_token', 100)->nullable();
+            $table->bigInteger('super_customer_id')->nullable();
             $table->timestamps();
         });
 
@@ -37,6 +38,7 @@ class CreateSuperAdminTables extends Migration
             $table->bigIncrements('id');
             $table->string('name', 50);
             $table->string('slug', 50)->unique();
+            $table->bigInteger('super_customer_id')->nullable();
             $table->timestamps();
         });
 
@@ -48,6 +50,7 @@ class CreateSuperAdminTables extends Migration
             $table->text('http_path')->nullable();
             $table->integer('order')->default(0);
             $table->bigInteger('parent_id')->default(0);
+            $table->bigInteger('super_customer_id')->nullable();
             $table->timestamps();
         });
 
@@ -58,7 +61,6 @@ class CreateSuperAdminTables extends Migration
             $table->string('title', 50);
             $table->string('icon', 50)->nullable();
             $table->string('uri', 50)->nullable();
-
             $table->timestamps();
         });
 
@@ -87,14 +89,16 @@ class CreateSuperAdminTables extends Migration
             $table->bigInteger('permission_id');
             $table->bigInteger('menu_id');
             $table->unique(['permission_id', 'menu_id']);
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
         Schema::create('super_customer', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->string('name', 128)->default('')->comment('属性名称');
             $table->string('link', 64)->default('')->comment('联系人');
-            $table->string('phone', 11)->default('')->comment('手机号码');
-            $table->string('other', 500)->default('')->comment('备注');
+            $table->string('phone', 11)->default('')->comment('手机号码')->unique();
+            $table->string('other', 500)->nullable()->default('')->comment('备注');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -33,6 +33,8 @@ class CreateApplyForItemTable extends Migration
             $table->unsignedTinyInteger('standard')->default(0)->comment('检验标准');
             $table->unsignedDecimal('percent')->default(0.00)->comment('含绒量');
             $table->unsignedDecimal('should_num')->default(0.00)->comment('申领数量');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
         });
     }

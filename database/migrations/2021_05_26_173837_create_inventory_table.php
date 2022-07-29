@@ -32,6 +32,8 @@ class CreateInventoryTable extends Migration
             $table->timestamp('end_at')->nullable()->comment('盘点结束时间');
             $table->unsignedInteger('user_id')->comment('创建人');
             $table->text('other')->comment('备注');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

@@ -21,6 +21,8 @@ class CreateMouldTable extends Migration
             $table->string('manufacturer')->default('');
             $table->integer('customer_id');
             $table->string('die_life')->default('');
+            $table->bigInteger('super_customer_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });
