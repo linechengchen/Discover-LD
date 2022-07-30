@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\URL;
  */
 class AdministratorModel extends Model implements AuthenticatableContract
 {
+
     protected $table = 'admin_users';
     use Authenticatable,
         HasPermissions,

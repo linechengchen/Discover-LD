@@ -25,12 +25,17 @@ Route::group([
 ], function (Router $router) {
     $router->get('/', 'HomeController@index');
 
+
+
     $router->get('api/get-attr-value', 'ApiController@getAttrValue')->name('api.attrvalue.find');
     $router->get('api/get-product-unit', 'ApiController@getUnitByProductId')->name('api.productunit.find');
     $router->get('api/get-product', 'ApiController@getProductInfo')->name('api.product.find');
     $router->post('api/with/order', 'ApiController@withOrder')->name('api.with.order');
     $router->get('api/get-customer-address', 'ApiController@getCustomerAddress')->name('api.customer.address.find');
     $router->get('api/get-customer-drawee', 'ApiController@getCustomerDrawee')->name('api.customer.drawee.find');
+
+
+    $router->resource('users', 'UserController');
 
     $router->resource('attrs', 'AttrController');
     $router->resource('products', 'ProductController');

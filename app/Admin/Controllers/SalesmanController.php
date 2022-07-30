@@ -2,11 +2,13 @@
 
 namespace App\Admin\Controllers;
 
+use Admin;
 use App\Admin\Repositories\Salesman;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Log;
 
 class SalesmanController extends AdminController
 {
@@ -17,17 +19,17 @@ class SalesmanController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new Salesman(), function (Grid $grid) {
+        return Grid::make(self(new Salesman()), function (Grid $grid) {
             $grid->column('id')->sortable();
             $grid->column('name');
             $grid->column('phone');
             $grid->column('address');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
-        
+
             });
         });
     }
@@ -61,11 +63,13 @@ class SalesmanController extends AdminController
         return Form::make(new Salesman(), function (Form $form) {
             $form->display('id');
             $form->text('name');
-            $form->text('phone');
+            $form->mobile('phone');
             $form->text('address');
-        
+            $form->hidden('super_customer_id')->value(Admin::user()->id);
+
             $form->display('created_at');
             $form->display('updated_at');
+
         });
     }
 }

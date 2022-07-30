@@ -16,7 +16,14 @@ use App\Models\AttrValueModel;
 use App\Models\BaseModel;
 use App\Models\OrderNoGeneratorModel;
 
-if (! file_exists("lower_pinyin_abbr")) {
+if (!file_exists('self')) {
+    function self($model)
+    {
+        return $model->model()->where('super_customer_id', Admin::user()->id);
+    }
+}
+
+if (!file_exists("lower_pinyin_abbr")) {
     /**
      * @param string $str
      *
@@ -28,7 +35,7 @@ if (! file_exists("lower_pinyin_abbr")) {
     }
 }
 
-if (! function_exists('build_order_no')) {
+if (!function_exists('build_order_no')) {
     /**
      * @param string $prefix
      * @return string
@@ -44,7 +51,7 @@ if (! function_exists('build_order_no')) {
         return $prefix . $date . str_pad($number + 1, "4", "0", STR_PAD_LEFT);
     }
 }
-if (! function_exists('crossJoin')) {
+if (!function_exists('crossJoin')) {
     /**
      * @param $arrays
      * @return array
@@ -71,20 +78,20 @@ if (! function_exists('crossJoin')) {
     }
 }
 
-if (! function_exists('attrCrossJoin')) {
+if (!function_exists('attrCrossJoin')) {
     function attrCrossJoin($arrays)
     {
         $result = [];
         $attr_values = AttrValueModel::getAttrValues();
-        array_map(function (array $value) use (&$result,$attr_values) {
-            $key          = implode(',', $value);
-            $str          = $attr_values->only($value);
+        array_map(function (array $value) use (&$result, $attr_values) {
+            $key = implode(',', $value);
+            $str = $attr_values->only($value);
             $result[$key] = $str;
         }, crossJoin($arrays));
         return $result;
     }
 }
-if (! function_exists('show_order_review')) {
+if (!function_exists('show_order_review')) {
     function show_order_review(int $review_status): int
     {
         if (in_array($review_status, [BaseModel::REVIEW_STATUS_WAIT, BaseModel::REVIEW_STATUS_REREVIEW])) {
@@ -94,7 +101,7 @@ if (! function_exists('show_order_review')) {
     }
 }
 
-if (! file_exists("store_order_img")) {
+if (!file_exists("store_order_img")) {
     /**
      * @param int $status
      *

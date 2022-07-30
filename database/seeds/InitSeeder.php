@@ -89,7 +89,7 @@ class InitSeeder extends Seeder
                 'name'        => '管理员',
                 'slug'        => 'users',
                 'http_method' => '',
-                'http_path'   => '/auth/users*',
+                'http_path'   => '/users*',
                 'parent_id'   => 1,
                 'order'       => 2,
                 'created_at'  => $createdAt,
