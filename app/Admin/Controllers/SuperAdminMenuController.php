@@ -3,7 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Repositories\SuperAdminMenu;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
@@ -26,10 +26,10 @@ class SuperAdminMenuController extends AdminController
             $grid->column('uri');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
-        
+
             });
         });
     }
@@ -69,7 +69,7 @@ class SuperAdminMenuController extends AdminController
             $form->text('title');
             $form->text('icon');
             $form->text('uri');
-        
+
             $form->display('created_at');
             $form->display('updated_at');
         });

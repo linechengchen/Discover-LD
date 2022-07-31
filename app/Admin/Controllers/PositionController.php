@@ -15,7 +15,7 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Repositories\Position;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 

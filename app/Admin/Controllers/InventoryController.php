@@ -18,7 +18,7 @@ use App\Admin\Actions\Grid\Delete;
 use App\Admin\Actions\Grid\EditInventoryOrder;
 use App\Admin\Repositories\Inventory;
 use App\Models\InventoryModel;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 

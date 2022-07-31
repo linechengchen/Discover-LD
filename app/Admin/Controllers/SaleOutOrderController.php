@@ -23,7 +23,7 @@ use App\Admin\Repositories\SaleOutOrder;
 use App\Models\PurchaseOrderModel;
 use App\Models\SaleOrderModel;
 use App\Models\SaleOutOrderModel;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Illuminate\Support\Fluent;
 

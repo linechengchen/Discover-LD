@@ -22,7 +22,7 @@ use App\Models\CraftModel;
 use App\Models\ProductModel;
 use App\Models\SkuStockBatchModel;
 use App\Models\TaskModel;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Models\Administrator;

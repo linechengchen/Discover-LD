@@ -22,7 +22,7 @@ use App\Admin\Repositories\PurchaseOrder;
 use App\Models\ProductModel;
 use App\Models\PurchaseOrderModel;
 use App\Repositories\SupplierRepository;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Illuminate\Support\Fluent;
 

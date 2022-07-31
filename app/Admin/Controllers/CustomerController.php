@@ -17,7 +17,7 @@ namespace App\Admin\Controllers;
 use App\Admin\Actions\Grid\Statement;
 use App\Admin\Repositories\Customer;
 use App\Models\CustomerModel;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 
