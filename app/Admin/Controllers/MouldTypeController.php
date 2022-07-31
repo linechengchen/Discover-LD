@@ -2,8 +2,8 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Forms\SelfForm as Form;
 use App\Admin\Repositories\MouldType;
-use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
@@ -22,10 +22,10 @@ class MouldTypeController extends AdminController
             $grid->column('name');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
-        
+
             });
         });
     }
@@ -57,7 +57,7 @@ class MouldTypeController extends AdminController
         return Form::make(new MouldType(), function (Form $form) {
             $form->display('id');
             $form->text('name');
-        
+
             $form->display('created_at');
             $form->display('updated_at');
         });

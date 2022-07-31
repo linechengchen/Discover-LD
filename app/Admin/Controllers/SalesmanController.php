@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use Admin;
+use App\Admin\Forms\SelfForm;
 use App\Admin\Repositories\Salesman;
 use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
@@ -60,12 +61,11 @@ class SalesmanController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new Salesman(), function (Form $form) {
+        return Form::make(new Salesman(), function (SelfForm $form) {
             $form->display('id');
-            $form->text('name');
-            $form->mobile('phone');
+            $form->text('name')->required();
+            $form->mobile('phone')->required();
             $form->text('address');
-            $form->hidden('super_customer_id')->value(Admin::user()->id);
 
             $form->display('created_at');
             $form->display('updated_at');

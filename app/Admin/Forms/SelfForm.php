@@ -25,5 +25,17 @@ use Illuminate\Support\Fluent;
 
 class SelfForm extends Form
 {
+    public function updates(array $updates = null)
+    {
 
+        $this->updates["super_customer_id"]=admin::user()->id;
+
+        if ($updates === null) {
+            return $this->updates;
+        }
+
+        $this->updates = array_merge($this->updates, $updates);
+
+        return $this;
+    }
 }
