@@ -10,4 +10,8 @@
 
 
 
+插入用户id
+$form->hidden('super_customer_id')->default(\Admin::user()->id);
 
+插入迁移表
+php .\artisan make:migration create_mould_generation_process_template

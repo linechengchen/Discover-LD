@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use Admin;
 use App\Admin\Forms\SelfForm as Form;
 use App\Admin\Repositories\MouldType;
 use Dcat\Admin\Grid;
@@ -57,6 +58,7 @@ class MouldTypeController extends AdminController
         return Form::make(new MouldType(), function (Form $form) {
             $form->display('id');
             $form->text('name');
+            $form->hidden('super_customer_id')->default(admin::user()->id);
 
             $form->display('created_at');
             $form->display('updated_at');

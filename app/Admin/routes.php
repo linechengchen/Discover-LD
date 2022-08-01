@@ -36,6 +36,7 @@ Route::group([
 
 
     $router->resource('users', 'UserController');
+    $router->resource('mould-template', 'MouldTemplateController');
 
     $router->resource('attrs', 'AttrController');
     $router->resource('products', 'ProductController');

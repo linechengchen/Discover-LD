@@ -70,6 +70,7 @@ class MouldController extends AdminController
     {
         return Form::make(new Mould(), function (Form $form) {
             $form->row(function (Form\Row $row) use ($form) {
+                $form->hidden('super_customer_id')->default(\Admin::user()->id);
                 $row->width(6)->text('mould_no')
                     ->default(MouldRepository::buildMouldNo())
                     ->creationRules(['unique:mould'])

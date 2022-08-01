@@ -59,6 +59,12 @@ class InitSeeder extends Seeder
             'name'       => 'Administrator',
             'created_at' => $createdAt,
         ]);
+        Administrator::create([
+            'username'   => '18324254558',
+            'password'   => bcrypt('admin'),
+            'name'       => '正博智能机械',
+            'created_at' => $createdAt,
+        ]);
 
         // create a role.
 
@@ -70,6 +76,7 @@ class InitSeeder extends Seeder
 
         // add role to user.
         Administrator::first()->roles()->save(Role::first());
+        Administrator::find(2)->roles()->save(Role::first());
 
         //create a permission
 
@@ -492,6 +499,14 @@ class InitSeeder extends Seeder
                 'title'         => '模具类型',
                 'icon'          => 'feather icon-cpu',
                 'uri'           => 'mould-type',
+                'created_at'    => $createdAt,
+            ],
+            [
+                'parent_id'     => 43,
+                'order'         => 41,
+                'title'         => '模具模板',
+                'icon'          => 'feather icon-cpu',
+                'uri'           => 'mould-template',
                 'created_at'    => $createdAt,
             ],
             [
