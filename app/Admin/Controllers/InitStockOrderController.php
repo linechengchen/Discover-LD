@@ -21,7 +21,7 @@ use App\Admin\Repositories\InitStockOrder;
 use App\Models\InitStockOrderModel;
 use App\Models\PositionModel;
 use App\Models\ProductModel;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Models\Administrator;
 use Illuminate\Support\Fluent;

@@ -7,7 +7,7 @@ use App\Models\CustomerModel;
 use App\Repositories\CustomerRepository;
 use App\Repositories\MouldRepository;
 use App\Repositories\MouldTypeRepository;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;

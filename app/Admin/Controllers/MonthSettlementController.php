@@ -26,7 +26,7 @@ use App\Models\SupplierModel;
 use Carbon\Carbon;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Http\Controllers\AdminController;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Traits\HasFormResponse;
 use Illuminate\Database\Eloquent\Builder;

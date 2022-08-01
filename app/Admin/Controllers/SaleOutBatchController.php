@@ -19,7 +19,7 @@ use App\Admin\Actions\Grid\Delete;
 use App\Admin\Repositories\SaleOutBatch;
 use App\Models\SaleOutItemModel;
 use App\Models\SaleOutOrderModel;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 

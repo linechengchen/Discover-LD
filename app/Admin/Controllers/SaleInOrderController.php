@@ -16,7 +16,7 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Actions\Grid\BatchOrderPrint;
 use App\Admin\Repositories\SaleInOrder;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 

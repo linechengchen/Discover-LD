@@ -16,7 +16,7 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Repositories\CheckProduct;
 use App\Models\ProductModel;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;

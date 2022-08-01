@@ -3,7 +3,7 @@
 namespace App\Admin\Controllers;
 
 use Dcat\Admin\Admin;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Auth\Permission;
 use Dcat\Admin\Http\Controllers\AdminController;

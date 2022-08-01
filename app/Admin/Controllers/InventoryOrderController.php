@@ -24,7 +24,7 @@ use App\Admin\Extensions\Form\Order\OrderController;
 use App\Admin\Repositories\InventoryOrder;
 use App\Models\InventoryModel;
 use App\Models\InventoryOrderModel;
-use Dcat\Admin\Form;
+use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Models\Administrator;
 use Illuminate\Database\Eloquent\Builder;
