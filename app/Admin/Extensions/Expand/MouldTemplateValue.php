@@ -24,13 +24,14 @@ class MouldTemplateValue extends LazyRenderable
     public function render()
     {
         $attribute_id = $this->key;
-        $attributes = MouldTemplateValueModel::where('mould_template_id', $attribute_id)->get(['id','name','admin','play_day','step']);
+        $attributes = MouldTemplateValueModel::where('mould_template_id', $attribute_id)->get(['id','name','admin','play_day','step_day','step']);
         $data = $attributes->map(function (MouldTemplateValueModel $attributeValueModel, $key) {
             return [
                 'id' => $key + 1,
                 'name' => $attributeValueModel->name,
                 'admin' => $attributeValueModel->admin,
                 'play_day' => $attributeValueModel->play_day."天",
+                'step_day' => $attributeValueModel->step_day."%",
                 'step' => $attributeValueModel->step."%",
             ];
         })->toArray();
@@ -39,6 +40,7 @@ class MouldTemplateValue extends LazyRenderable
             '计划名称',
             '负责人',
             '预计日期',
+            '按时间预计完成度',
             '预计完成度',
         ];
         return Table::make($titles, $data);

@@ -14,10 +14,12 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\RowActions\CopyMouldTemplate;
 use App\Admin\Extensions\Expand\AttrValue;
 use App\Admin\Extensions\Expand\MouldTemplateValue;
 use App\Admin\Repositories\Attr;
 use App\Admin\Repositories\MouldTemplate;
+use App\Models\MouldTemplateModel;
 use App\Models\MouldTemplateValueModel;
 use App\Models\MouldTypeModel;
 use Dcat\Admin\Form;
@@ -40,6 +42,7 @@ class MouldTemplateController extends AdminController
                 ->display('查看')
                 ->expand(MouldTemplateValue::class);
             $grid->column('created_at');
+            $grid->actions([new CopyMouldTemplate(MouldTemplateModel::class)]);
         });
     }
 
