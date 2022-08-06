@@ -20,8 +20,13 @@ class CreateMouldTable extends Migration
             $table->string('mould_no')->default('');
             $table->string('manufacturer')->default('');
             $table->integer('customer_id');
-            $table->string('die_life')->default('');
+            $table->bigInteger('early_warning_mode')->nullable()->comment('预警方式');
+            $table->string('die_life')->default('')->comment('理论寿命');
             $table->bigInteger('super_customer_id')->nullable();
+            $table->bigInteger('type')->nullable()->default(1)->comment('1可用模具，2设计模具');
+            $table->bigInteger('mould_template_id')->nullable()->comment('模板id');
+            $table->bigInteger('lower_limit')->comment('库存下限');
+            $table->string('remark')->nullable()->comment('备注');
 
             $table->timestamps();
             $table->softDeletes();

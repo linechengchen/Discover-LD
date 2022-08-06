@@ -10,7 +10,9 @@ return [
         'mould_no' => '模具编号',
         'manufacturer' => '制造商',
         'customer_id' => '模具归属',
-        'die_life' => '可生产数量',
+        'die_life' => '理论寿命',
+        'type' => '模具状态',
+        'early_warning_mode' => '预警方式',
     ],
     'options' => [
     ],
