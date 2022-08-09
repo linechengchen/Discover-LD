@@ -13,6 +13,7 @@ return [
         'die_life' => '理论寿命',
         'type' => '模具状态',
         'early_warning_mode' => '预警方式',
+        'schedule_type' => '进度类型',
     ],
     'options' => [
     ],

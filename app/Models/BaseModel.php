@@ -34,6 +34,15 @@ class BaseModel extends Model
     const STATUS_NO = 0;
     const STATUS_OK = 1;
 
+    const SCHEDULE_TYPE_NONE = 0;
+    const SCHEDULE_TYPE_STANDARD_INTERVAL = 1;
+    const SCHEDULE_TYPE_PLANNED_COMPLETION_TIME = 2;
+    const SCHEDULE_TYPE = [
+        self::SCHEDULE_TYPE_NONE => '无需选择',
+        self::SCHEDULE_TYPE_STANDARD_INTERVAL => '标准间隔时间',
+        self::SCHEDULE_TYPE_PLANNED_COMPLETION_TIME => '计划完成时间',
+
+    ];
     const REVIEW_STATUS_WAIT = 0;
     const REVIEW_STATUS_OK = 1;
     const REVIEW_STATUS_REREVIEW = 2;

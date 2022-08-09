@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSuperAdminTables extends Migration
+class CreateSuperAdminTable extends Migration
 {
     public function getConnection()
     {

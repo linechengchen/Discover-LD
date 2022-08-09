@@ -14,6 +14,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\MouldDesignModel;
+use App\Models\MouldDesignScheduleModel;
+use App\Models\MouldModel;
+use App\Models\MouldTypeModel;
+use App\Repositories\MouldRepository;
 use Faker\Generator as Faker;
 use App\Models\MouldTemplateModel;
 use App\Models\MouldTemplateValueModel;
@@ -48,7 +53,13 @@ class InitSeeder extends Seeder
         $faker = \Faker\Factory::create('zh_CN');
 
         MouldTemplateModel::truncate();
+
+        MouldTemplateModel::truncate();
         MouldTemplateValueModel::truncate();
+        MouldTypeModel::truncate();
+        MouldModel::truncate();
+        MouldDesignModel::truncate();
+        MouldDesignScheduleModel::truncate();
         $createdAt = date('Y-m-d H:i:s');
 
         $mt =MouldTemplateModel::create([
@@ -74,6 +85,60 @@ class InitSeeder extends Seeder
             'step'=>80,
             'created_at'=>$createdAt,
         ]);
+        $mould_type=MouldTypeModel::create([
+            'name'=>'简单'
+        ]);
+        $mould_type=MouldTypeModel::create([
+            'name'=>'复杂'
+        ]);
+        $mould=MouldModel::create([
+            'name'=>'最初的模具',
+            'mould_type_id'=>1,
+            'mould_no'=>'MD000001',
+            'manufacturer'=>'正博',
+            'customer_id'=>'1',
+            'early_warning_mode'=>1,
+            'die_life'=>1000,
+            'super_customer_id'=>2,
+            'type'=>1,
+            'mould_template_id'=>null,
+            'schedule_type'=>1,
+            'lower_limit'=>10,
+        ]);
+        $mould2=MouldModel::create([
+            'name'=>'复杂的模具',
+            'mould_type_id'=>2,
+            'mould_no'=>'MD000002',
+            'manufacturer'=>'正博',
+            'customer_id'=>'1',
+            'early_warning_mode'=>2,
+            'die_life'=>1000,
+            'super_customer_id'=>2,
+            'type'=>2,
+            'mould_template_id'=>1,
+            'schedule_type'=>2,
+            'lower_limit'=>10,
+        ]);
+        $moulddesign = MouldDesignModel::create([
+            'super_customer_id'=>$mould2->super_customer_id,
+            'mould_template_id' => $mould2->mould_template_id,
+            'mould_id' => $mould2->id,
+            'schedule' => 0,
+            'schedule_type' => $mould2->schedule_type,
+        ]);
+        $MT= MouldTemplateValueModel::where('mould_template_id',$mould2->mould_template_id)->get();
+        foreach ($MT as $item) {
+            $moulddesignschedule = MouldDesignScheduleModel::create([
+                'super_customer_id'=>$mould2->super_customer_id,
+                'mould_template_id' => $mould2->mould_template_id,
+                'mould_design_id' => $mould2->id,
+                'name' => $item->name,
+                'admin' => $item->admin,
+                'play_day' => $item->play_day,
+                'step_day' => $item->step_day,
+                'type' => $item->schedule_type,
+            ]);
+        }
     }
 
     public function admin()
@@ -556,6 +621,14 @@ class InitSeeder extends Seeder
                 'title' => '模具档案',
                 'icon' => 'feather icon-cpu',
                 'uri' => 'mould',
+                'created_at' => $createdAt,
+            ],
+            [
+                'parent_id' => 43,
+                'order' => 41,
+                'title' => '模具设计',
+                'icon' => 'feather icon-cpu',
+                'uri' =>  'mould-design',
                 'created_at' => $createdAt,
             ],
             [
