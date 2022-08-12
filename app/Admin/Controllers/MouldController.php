@@ -43,6 +43,7 @@ class MouldController extends AdminController
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
             $grid->showColumnSelector();
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->like('name')->width(4);
                 $filter->like('mould_no')->width(4);
@@ -161,14 +162,16 @@ class MouldController extends AdminController
                     ]);
                    $MT= MouldTemplateValueModel::where('mould_template_id',$form->mould_template_id)->get();
                     foreach ($MT as $item) {
+
                         $moulddesignschedule = MouldDesignScheduleModel::create([
                             'super_customer_id'=>$form->super_customer_id,
                             'mould_template_id' => $form->mould_template_id,
-                            'mould_design_id' => $moulddesign,
+                            'mould_design_id' => $moulddesign->id,
                             'name' => $item->name,
                             'admin' => $item->admin,
                             'play_day' => $item->play_day,
                             'step_day' => $item->step_day,
+                            'step' => $item->step,
                             'type' => $form->schedule_type,
                         ]);
                     }

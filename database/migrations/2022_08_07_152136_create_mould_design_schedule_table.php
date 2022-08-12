@@ -24,6 +24,9 @@ class CreateMouldDesignScheduleTable extends Migration
             $table->integer('step_day')->nullable()->comment('按时间完成度');
             $table->integer('step')->nullable()->comment('完成度');
             $table->integer('state')->nullable()->comment('状态1未完成2 已完成')->default(1);
+            $table->dateTime('start_date')->nullable()->comment('开始时间');
+            $table->dateTime('complete_date')->nullable()->comment('完成时间');
+            $table->string('remark')->nullable()->comment('备注');
             $table->integer('type')->nullable()->comment('类型')->default(1);
 
             $table->timestamps();

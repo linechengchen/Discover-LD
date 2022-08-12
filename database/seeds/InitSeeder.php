@@ -105,8 +105,10 @@ class InitSeeder extends Seeder
             'schedule_type'=>1,
             'lower_limit'=>10,
         ]);
+
+
         $mould2=MouldModel::create([
-            'name'=>'复杂的模具',
+            'name'=>'标准间隔时间模具',
             'mould_type_id'=>2,
             'mould_no'=>'MD000002',
             'manufacturer'=>'正博',
@@ -131,11 +133,49 @@ class InitSeeder extends Seeder
             $moulddesignschedule = MouldDesignScheduleModel::create([
                 'super_customer_id'=>$mould2->super_customer_id,
                 'mould_template_id' => $mould2->mould_template_id,
-                'mould_design_id' => $mould2->id,
+                'mould_design_id' => $moulddesign->id,
                 'name' => $item->name,
                 'admin' => $item->admin,
                 'play_day' => $item->play_day,
                 'step_day' => $item->step_day,
+                'step' => $item->step,
+                'type' => $item->schedule_type,
+            ]);
+        }
+
+//        计划完成时间模具
+        $mould3=MouldModel::create([
+            'name'=>'计划完成时间模具',
+            'mould_type_id'=>2,
+            'mould_no'=>'MD000003',
+            'manufacturer'=>'正博',
+            'customer_id'=>'1',
+            'early_warning_mode'=>2,
+            'die_life'=>1000,
+            'super_customer_id'=>2,
+            'type'=>2,
+            'mould_template_id'=>1,
+            'schedule_type'=>1,
+            'lower_limit'=>10,
+        ]);
+        $moulddesign3 = MouldDesignModel::create([
+            'super_customer_id'=>$mould3->super_customer_id,
+            'mould_template_id' => $mould3->mould_template_id,
+            'mould_id' => $mould3->id,
+            'schedule' => 0,
+            'schedule_type' => $mould3->schedule_type,
+        ]);
+        $MT= MouldTemplateValueModel::where('mould_template_id',$mould3->mould_template_id)->get();
+        foreach ($MT as $item) {
+            $moulddesignschedule = MouldDesignScheduleModel::create([
+                'super_customer_id'=>$mould3->super_customer_id,
+                'mould_template_id' => $mould3->mould_template_id,
+                'mould_design_id' => $moulddesign3->id,
+                'name' => $item->name,
+                'admin' => $item->admin,
+                'play_day' => $item->play_day,
+                'step_day' => $item->step_day,
+                'step' => $item->step,
                 'type' => $item->schedule_type,
             ]);
         }

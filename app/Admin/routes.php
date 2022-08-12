@@ -86,6 +86,7 @@ Route::group([
     //模具管理
     $router->resource('mould','MouldController');
     $router->resource('mould-type','MouldTypeController');
+    $router->resource('mould-design-schedule','MouldDesignScheduleController');
 
     $router->resource('demands', 'DemandController');
     $router->resource('inventorys', "InventoryController");
