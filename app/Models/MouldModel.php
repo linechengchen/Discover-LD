@@ -14,10 +14,14 @@ class MouldModel extends Model
 
 
     protected $table = 'mould';
-    protected $with = ['mould_type','customer','mould_template'];
+    protected $with = ['mould_type','customer','mould_template','mould_design'];
 
     public function mould_type():BelongsTo{
         return  $this->belongsTo(MouldTypeModel::class);
+    }
+    public function mould_design(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return  $this->hasOne(MouldDesignModel::class,'mould_id','id');
     }
     public function mould_template():BelongsTo{
         return  $this->belongsTo(MouldTemplateModel::class);

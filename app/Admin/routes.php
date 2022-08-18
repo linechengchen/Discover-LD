@@ -34,10 +34,13 @@ Route::group([
     $router->get('api/get-customer-address', 'ApiController@getCustomerAddress')->name('api.customer.address.find');
     $router->get('api/get-customer-drawee', 'ApiController@getCustomerDrawee')->name('api.customer.drawee.find');
 
+    $router->resource('team', 'TeamController');
+    $router->resource('work-shop', 'TeamController');
 
     $router->resource('users', 'UserController');
     $router->resource('mould-template', 'MouldTemplateController');
     $router->resource('mould-design', 'MouldDesignController');
+    $router->resource('mould-management', 'MouldManagementController');
 
     $router->resource('attrs', 'AttrController');
     $router->resource('products', 'ProductController');

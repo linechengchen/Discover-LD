@@ -297,7 +297,7 @@ class InitSeeder extends Seeder
             [
                 'parent_id' => 0,
                 'order' => 1,
-                'title' => '首页',
+                'title' => '可视化排程',
                 'icon' => 'feather icon-bar-chart-2',
                 'uri' => '/',
                 'created_at' => $createdAt,
@@ -680,11 +680,35 @@ class InitSeeder extends Seeder
                 'created_at' => $createdAt,
             ],
             [
+                'parent_id' => 48,
+                'order' => 42,
+                'title' => '模具库存',
+                'icon' => 'feather icon-grid',
+                'uri' => 'mould-management',
+                'created_at' => $createdAt,
+            ],
+            [
                 'parent_id' => 0,
-                'order' => 43,
-                'title' => '报表中心',
+                'order' => 1,
+                'title' => '基础数据',
+                'icon' => 'feather icon-settings',
+                'uri' => '',
+                'created_at' => $createdAt,
+            ],
+            [
+                'parent_id' => 50,
+                'order' => 2,
+                'title' => '班组管理',
                 'icon' => 'fa-calendar',
-                'uri' => 'report-centers',
+                'uri' => 'team',
+                'created_at' => $createdAt,
+            ],
+            [
+                'parent_id' => 50,
+                'order' => 3,
+                'title' => '车间管理',
+                'icon' => 'fa-calendar',
+                'uri' => 'work-shop',
                 'created_at' => $createdAt,
             ],
             [
@@ -695,6 +719,7 @@ class InitSeeder extends Seeder
                 'uri' => 'demands',
                 'created_at' => $createdAt,
             ],
+
         ]);
 
         (new Menu())->flushCache();
