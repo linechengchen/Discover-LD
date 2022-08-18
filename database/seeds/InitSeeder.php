@@ -698,17 +698,17 @@ class InitSeeder extends Seeder
             [
                 'parent_id' => 50,
                 'order' => 2,
-                'title' => '班组管理',
+                'title' => '车间管理',
                 'icon' => 'fa-calendar',
-                'uri' => 'team',
+                'uri' => 'work-shop',
                 'created_at' => $createdAt,
             ],
             [
                 'parent_id' => 50,
                 'order' => 3,
-                'title' => '车间管理',
+                'title' => '班组管理',
                 'icon' => 'fa-calendar',
-                'uri' => 'work-shop',
+                'uri' => 'team',
                 'created_at' => $createdAt,
             ],
             [

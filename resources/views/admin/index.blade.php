@@ -44,8 +44,8 @@
                     resourceTimelineDay: {
                         buttonText: ':19 slots',
                         slotMinTime: "08:00:00",
-                        slotMaxTime: "20:00:00",
-                        slotDuration: '04:00'
+                        slotMaxTime: "10:00:00",
+                        slotDuration: '02:00'
                     },
                     resourceTimelineTenDay: {
                         type: 'resourceTimeline',

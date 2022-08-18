@@ -35,7 +35,7 @@ Route::group([
     $router->get('api/get-customer-drawee', 'ApiController@getCustomerDrawee')->name('api.customer.drawee.find');
 
     $router->resource('team', 'TeamController');
-    $router->resource('work-shop', 'TeamController');
+    $router->resource('work-shop', 'WorkShopController');
 
     $router->resource('users', 'UserController');
     $router->resource('mould-template', 'MouldTemplateController');

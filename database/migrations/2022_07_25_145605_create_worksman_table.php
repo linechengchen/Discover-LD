@@ -18,8 +18,8 @@ class CreateWorksmanTable extends Migration
             $table->string('work_no')->comment('员工编号');
             $table->string('name')->default('')->comment('员工名称');
             $table->string('phone')->default('')->comment('电话号码');
-            $table->integer('type')->default('1销售人员2工作人员')->comment('员工类型');
-            $table->integer('status')->default('1在职2离职')->comment('员工状态');
+            $table->integer('type')->default('1')->comment('员工类型1销售人员2工作人员');
+            $table->integer('status')->default('1')->comment('员工状态');
             $table->string('address')->default('')->comment('地址')->nullable();
             $table->bigInteger('super_customer_id')->nullable();
 

@@ -3,6 +3,9 @@
 ## 创建迁移
 ## 插入seed数据  
 ### php artisan db:seed  [--class=名字]
+### 重新迁移数据库并 插入表数据
+php .\artisan migrate:fresh  --seeder=InitSeeder
+
 #### 例如  php artisan db:seed --class=InitSeeder
 
 
