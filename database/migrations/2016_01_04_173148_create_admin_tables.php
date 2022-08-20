@@ -30,8 +30,6 @@ class CreateAdminTables extends Migration
             $table->string('name');
             $table->string('avatar')->nullable();
             $table->string('remember_token', 100)->nullable();
-            $table->bigInteger('super_customer_id')->nullable();
-
             $table->timestamps();
         });
 
@@ -39,8 +37,6 @@ class CreateAdminTables extends Migration
             $table->bigIncrements('id');
             $table->string('name', 50);
             $table->string('slug', 50)->unique();
-            $table->bigInteger('super_customer_id')->nullable();
-
             $table->timestamps();
         });
 
@@ -52,8 +48,6 @@ class CreateAdminTables extends Migration
             $table->text('http_path')->nullable();
             $table->integer('order')->default(0);
             $table->bigInteger('parent_id')->default(0);
-            $table->bigInteger('super_customer_id')->nullable();
-
             $table->timestamps();
         });
 
@@ -65,8 +59,6 @@ class CreateAdminTables extends Migration
             $table->string('icon', 50)->nullable();
             $table->string('uri', 50)->nullable();
 
-            $table->bigInteger('super_customer_id')->nullable();
-
             $table->timestamps();
         });
 
@@ -74,8 +66,6 @@ class CreateAdminTables extends Migration
             $table->bigInteger('role_id');
             $table->bigInteger('user_id');
             $table->unique(['role_id', 'user_id']);
-            $table->bigInteger('super_customer_id')->nullable();
-
             $table->timestamps();
         });
 
@@ -83,8 +73,6 @@ class CreateAdminTables extends Migration
             $table->bigInteger('role_id');
             $table->bigInteger('permission_id');
             $table->unique(['role_id', 'permission_id']);
-            $table->bigInteger('super_customer_id')->nullable();
-
             $table->timestamps();
         });
 
@@ -92,8 +80,6 @@ class CreateAdminTables extends Migration
             $table->bigInteger('role_id');
             $table->bigInteger('menu_id');
             $table->unique(['role_id', 'menu_id']);
-            $table->bigInteger('super_customer_id')->nullable();
-
             $table->timestamps();
         });
 
@@ -101,8 +87,6 @@ class CreateAdminTables extends Migration
             $table->bigInteger('permission_id');
             $table->bigInteger('menu_id');
             $table->unique(['permission_id', 'menu_id']);
-            $table->bigInteger('super_customer_id')->nullable();
-
             $table->timestamps();
         });
     }

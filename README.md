@@ -13,6 +13,12 @@ Discover 是基于开发语言 `PHP7.3`，`Laravel` 框架开发。项目中采�
 
 
 ### 1.2 安装
+#### 配置伪静态
+location / {
+try_files $uri $uri/ /index.php?$query_string;
+}
+#### 发布静态资源
+php artisan admin:publish
 
 * [Github 地址](https://github.com/youyingxiang/Discover), [gitee 地址](https://gitee.com/dcat-phper/discover)
 * 执行 `composer install`  
