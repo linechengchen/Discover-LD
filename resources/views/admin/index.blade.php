@@ -16,7 +16,7 @@
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 locale: 'zh-cn',
-                timeZone: 'PRO',
+                timeZone: 'Asia/Shanghai',
                 headerToolbar: {
                     left: 'today prev,next',
                     center: 'title',

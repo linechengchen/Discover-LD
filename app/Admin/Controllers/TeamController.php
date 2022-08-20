@@ -17,36 +17,27 @@ namespace App\Admin\Controllers;
 use App\Admin\Actions\Grid\BatchCreateProSave;
 use App\Admin\Repositories\Product;
 use App\Admin\Repositories\Team;
+use App\Admin\Repositories\WorkShop;
 use App\Models\AttrModel;
 use App\Models\ProductModel;
+use App\Models\WorkShopModel;
 use App\Repositories\ProductRepository;
 use App\Repositories\UnitRepository;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
+use Dcat\Admin\Layout\Content;
 
 class TeamController extends AdminController
 {
     /**
      * Make a grid builder.
      *
-     * @return Grid
+     * @return Grid|Content
      */
-    protected function grid()
+    public function index(Content $content)
     {
-        return Grid::make(new Team(), function (Grid $grid) {
-            $grid->column('id')->sortable();
-            $grid->column('item_no')->emp();
-            $grid->column('name')->emp();
-            $grid->column('py_code')->emp();
-            $grid->column('type', '类型')->using(ProductModel::TYPE);
-            $grid->column('unit.name', '单位');
-            $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
-            $grid->showColumnSelector();
-            $grid->filter(function (Grid\Filter $filter) {
-            });
-        });
+        return $content->body(admin_view('admin.team'));
     }
 
     /**

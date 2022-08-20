@@ -18,6 +18,8 @@ use App\Models\MouldDesignModel;
 use App\Models\MouldDesignScheduleModel;
 use App\Models\MouldModel;
 use App\Models\MouldTypeModel;
+use App\Models\WorkShopModel;
+use App\Models\WorkShopValueModel;
 use App\Repositories\MouldRepository;
 use Faker\Generator as Faker;
 use App\Models\MouldTemplateModel;
@@ -62,76 +64,76 @@ class InitSeeder extends Seeder
         MouldDesignScheduleModel::truncate();
         $createdAt = date('Y-m-d H:i:s');
 
-        $mt =MouldTemplateModel::create([
+        $mt = MouldTemplateModel::create([
             'name' => "模板",
             'super_customer_id' => 2,
             'created_at' => $createdAt
         ]);
         MouldTemplateValueModel::create([
-            'mould_template_id'=>$mt->id,
-            'name'=>"工序1",
-            'admin'=> $faker->name,
-            'play_day'=>5,
-            'step_day'=>50,
-            'step'=>20,
-            'created_at'=>$createdAt,
+            'mould_template_id' => $mt->id,
+            'name' => "工序1",
+            'admin' => $faker->name,
+            'play_day' => 5,
+            'step_day' => 50,
+            'step' => 20,
+            'created_at' => $createdAt,
         ]);
         MouldTemplateValueModel::create([
-            'mould_template_id'=>$mt->id,
-            'name'=>"工序2",
-            'admin'=>$faker->name,
-            'play_day'=>5,
-            'step_day'=>50,
-            'step'=>80,
-            'created_at'=>$createdAt,
+            'mould_template_id' => $mt->id,
+            'name' => "工序2",
+            'admin' => $faker->name,
+            'play_day' => 5,
+            'step_day' => 50,
+            'step' => 80,
+            'created_at' => $createdAt,
         ]);
-        $mould_type=MouldTypeModel::create([
-            'name'=>'简单'
+        $mould_type = MouldTypeModel::create([
+            'name' => '简单'
         ]);
-        $mould_type=MouldTypeModel::create([
-            'name'=>'复杂'
+        $mould_type = MouldTypeModel::create([
+            'name' => '复杂'
         ]);
-        $mould=MouldModel::create([
-            'name'=>'最初的模具',
-            'mould_type_id'=>1,
-            'mould_no'=>'MD000001',
-            'manufacturer'=>'正博',
-            'customer_id'=>'1',
-            'early_warning_mode'=>1,
-            'die_life'=>1000,
-            'super_customer_id'=>2,
-            'type'=>1,
-            'mould_template_id'=>null,
-            'schedule_type'=>1,
-            'lower_limit'=>10,
+        $mould = MouldModel::create([
+            'name' => '最初的模具',
+            'mould_type_id' => 1,
+            'mould_no' => 'MD000001',
+            'manufacturer' => '正博',
+            'customer_id' => '1',
+            'early_warning_mode' => 1,
+            'die_life' => 1000,
+            'super_customer_id' => 2,
+            'type' => 1,
+            'mould_template_id' => null,
+            'schedule_type' => 1,
+            'lower_limit' => 10,
         ]);
 
 
-        $mould2=MouldModel::create([
-            'name'=>'标准间隔时间模具',
-            'mould_type_id'=>2,
-            'mould_no'=>'MD000002',
-            'manufacturer'=>'正博',
-            'customer_id'=>'1',
-            'early_warning_mode'=>2,
-            'die_life'=>1000,
-            'super_customer_id'=>2,
-            'type'=>2,
-            'mould_template_id'=>1,
-            'schedule_type'=>2,
-            'lower_limit'=>10,
+        $mould2 = MouldModel::create([
+            'name' => '标准间隔时间模具',
+            'mould_type_id' => 2,
+            'mould_no' => 'MD000002',
+            'manufacturer' => '正博',
+            'customer_id' => '1',
+            'early_warning_mode' => 2,
+            'die_life' => 1000,
+            'super_customer_id' => 2,
+            'type' => 2,
+            'mould_template_id' => 1,
+            'schedule_type' => 2,
+            'lower_limit' => 10,
         ]);
         $moulddesign = MouldDesignModel::create([
-            'super_customer_id'=>$mould2->super_customer_id,
+            'super_customer_id' => $mould2->super_customer_id,
             'mould_template_id' => $mould2->mould_template_id,
             'mould_id' => $mould2->id,
             'schedule' => 0,
             'schedule_type' => $mould2->schedule_type,
         ]);
-        $MT= MouldTemplateValueModel::where('mould_template_id',$mould2->mould_template_id)->get();
+        $MT = MouldTemplateValueModel::where('mould_template_id', $mould2->mould_template_id)->get();
         foreach ($MT as $item) {
             $moulddesignschedule = MouldDesignScheduleModel::create([
-                'super_customer_id'=>$mould2->super_customer_id,
+                'super_customer_id' => $mould2->super_customer_id,
                 'mould_template_id' => $mould2->mould_template_id,
                 'mould_design_id' => $moulddesign->id,
                 'name' => $item->name,
@@ -144,31 +146,31 @@ class InitSeeder extends Seeder
         }
 
 //        计划完成时间模具
-        $mould3=MouldModel::create([
-            'name'=>'计划完成时间模具',
-            'mould_type_id'=>2,
-            'mould_no'=>'MD000003',
-            'manufacturer'=>'正博',
-            'customer_id'=>'1',
-            'early_warning_mode'=>2,
-            'die_life'=>1000,
-            'super_customer_id'=>2,
-            'type'=>2,
-            'mould_template_id'=>1,
-            'schedule_type'=>1,
-            'lower_limit'=>10,
+        $mould3 = MouldModel::create([
+            'name' => '计划完成时间模具',
+            'mould_type_id' => 2,
+            'mould_no' => 'MD000003',
+            'manufacturer' => '正博',
+            'customer_id' => '1',
+            'early_warning_mode' => 2,
+            'die_life' => 1000,
+            'super_customer_id' => 2,
+            'type' => 2,
+            'mould_template_id' => 1,
+            'schedule_type' => 1,
+            'lower_limit' => 10,
         ]);
         $moulddesign3 = MouldDesignModel::create([
-            'super_customer_id'=>$mould3->super_customer_id,
+            'super_customer_id' => $mould3->super_customer_id,
             'mould_template_id' => $mould3->mould_template_id,
             'mould_id' => $mould3->id,
             'schedule' => 0,
             'schedule_type' => $mould3->schedule_type,
         ]);
-        $MT= MouldTemplateValueModel::where('mould_template_id',$mould3->mould_template_id)->get();
+        $MT = MouldTemplateValueModel::where('mould_template_id', $mould3->mould_template_id)->get();
         foreach ($MT as $item) {
             $moulddesignschedule = MouldDesignScheduleModel::create([
-                'super_customer_id'=>$mould3->super_customer_id,
+                'super_customer_id' => $mould3->super_customer_id,
                 'mould_template_id' => $mould3->mould_template_id,
                 'mould_design_id' => $moulddesign3->id,
                 'name' => $item->name,
@@ -214,6 +216,7 @@ class InitSeeder extends Seeder
 
         // create a role.
         $this->InitMouldTemplate();
+        $this->InitBaseData();
         Role::create([
             'name' => 'Administrator',
             'slug' => Role::ADMINISTRATOR,
@@ -668,7 +671,7 @@ class InitSeeder extends Seeder
                 'order' => 41,
                 'title' => '模具设计',
                 'icon' => 'feather icon-cpu',
-                'uri' =>  'mould-design',
+                'uri' => 'mould-design',
                 'created_at' => $createdAt,
             ],
             [
@@ -1221,6 +1224,46 @@ class InitSeeder extends Seeder
         ]);
 
         (new SuperMenu())->flushCache();
+    }
+
+    private function InitBaseData()
+    {
+        $workshop = WorkShopModel::create([
+            'name' => "车间1号",
+            'super_customer_id' => "2",
+        ]);
+        $workshop2 = WorkShopModel::create([
+            'name' => "车间2号",
+            'super_customer_id' => "2",
+        ]);
+        WorkShopValueModel::create([
+            'super_customer_id' => "2",
+            'work_shop_id' => $workshop2->id,
+            'name' => "早班",
+            'start' => '08:00:00',
+            'end' => '12:00:00'
+        ]);
+        WorkShopValueModel::create([
+            'super_customer_id' => "2",
+            'work_shop_id' => $workshop2->id,
+            'name' => "午班",
+            'start' => '13:00:00',
+            'end' => '15:00:00'
+        ]);
+        WorkShopValueModel::create([
+            'super_customer_id' => "2",
+            'work_shop_id' => $workshop->id,
+            'name' => "早班",
+            'start' => '08:00:00',
+            'end' => '12:00:00'
+        ]);
+        WorkShopValueModel::create([
+            'super_customer_id' => "2",
+            'work_shop_id' => $workshop->id,
+            'name' => "午班",
+            'start' => '13:00:00',
+            'end' => '15:00:00'
+        ]);
     }
 
 }
