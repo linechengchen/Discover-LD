@@ -23,6 +23,7 @@ use App\Models\ProductModel;
 use App\Models\WorkShopModel;
 use App\Repositories\ProductRepository;
 use App\Repositories\UnitRepository;
+use Dcat\Admin\Admin;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
@@ -37,7 +38,12 @@ class TeamController extends AdminController
      */
     public function index(Content $content)
     {
-        return $content->body(admin_view('admin.team'));
+        Admin::js('static/fullcalendar-scheduler-5.11.2/lib/main.js');
+        Admin::css('static/fullcalendar-scheduler-5.11.2/lib/main.css');
+        Admin::css('static/fullcalendar-scheduler-5.11.2/lib/locales/zh-cn.js');
+        Admin::js('static/js/alpine.min.js');
+        $workshop = WorkShopModel::orderBy('id', 'desc')->with('values')->get();
+        return $content->body(admin_view('admin.team',['workshop' => $workshop]));
     }
 
     /**

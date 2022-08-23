@@ -25,9 +25,11 @@ use Dcat\Admin\Layout\Row;
 class HomeController extends Controller
 {
     public function index(Content $content)
-    {     $content->breadcrumb(
-          ['text' => '可视化排程', 'url' => '/admin']
-         );
+    {
+        Admin::js('static/fullcalendar-scheduler-5.11.2/lib/main.js');
+        Admin::css('static/fullcalendar-scheduler-5.11.2/lib/main.css');
+        Admin::css('static/fullcalendar-scheduler-5.11.2/lib/locales/zh-cn.js');
+
         return $content->body(admin_view('admin.index'));
 
 //        Admin::js('/static/fullcalendar-5.11.2/lib/main.js');

@@ -13,7 +13,6 @@ class Teamcalendar extends Component
 
     public function change()
     {
-        Log::info('1234');
         $workshop = WorkShopModel::orderBy('id', 'desc')->with('values')->get();
         return view('livewire.teamcalendar', ['workshop' => $workshop, 'onlyworkshop' => $workshop[0]]);
 
