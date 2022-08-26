@@ -6,11 +6,11 @@ use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class SalesmanModel extends Model
+class WorksManModel extends Model
 {
 	use HasDateTimeFormatter;
     use SoftDeletes;
 
-    protected $table = 'salesman';
+    protected $table = 'worksman';
 
 }

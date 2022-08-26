@@ -7,7 +7,11 @@ return [
     'fields' => [
         'name' => '模板名称',
 
+
     ],
     'options' => [
     ],
+    'edit'         => '123',
+
+
 ];

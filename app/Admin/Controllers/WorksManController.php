@@ -4,14 +4,14 @@ namespace App\Admin\Controllers;
 
 use Admin;
 use App\Admin\Forms\SelfForm;
-use App\Admin\Repositories\Salesman;
+use App\Admin\Repositories\WorksMan;
 use App\Admin\Forms\SelfForm as Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Log;
 
-class SalesmanController extends AdminController
+class WorksManController extends AdminController
 {
     /**
      * Make a grid builder.
@@ -20,7 +20,7 @@ class SalesmanController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(self(new Salesman()), function (Grid $grid) {
+        return Grid::make(new WorksMan(), function (Grid $grid) {
             $grid->column('id')->sortable();
             $grid->column('name');
             $grid->column('phone');
@@ -44,7 +44,7 @@ class SalesmanController extends AdminController
      */
     protected function detail($id)
     {
-        return Show::make($id, new Salesman(), function (Show $show) {
+        return Show::make($id, new WorksMan(), function (Show $show) {
             $show->field('id');
             $show->field('name');
             $show->field('phone');
@@ -61,7 +61,7 @@ class SalesmanController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new Salesman(), function (SelfForm $form) {
+        return Form::make(new WorksMan(), function (SelfForm $form) {
             $form->display('id');
             $form->text('name')->required();
             $form->mobile('phone')->required();

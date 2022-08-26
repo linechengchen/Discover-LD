@@ -18,6 +18,7 @@ use App\Models\MouldTypeModel;
 use App\Repositories\CustomerRepository;
 use App\Repositories\MouldRepository;
 use App\Repositories\MouldTypeRepository;
+use Dcat\Admin\Admin;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
@@ -26,6 +27,8 @@ use Overtrue\Pinyin\Pinyin;
 
 class MouldManagementController extends AdminController
 {
+
+
     /**
      * Make a grid builder.
      *
@@ -36,7 +39,7 @@ class MouldManagementController extends AdminController
         return Grid::make(new MouldManagement('mould'), function (Grid $grid) {
             $grid->column('id')->sortable();
             $grid->column('mould_management_no');
-            $grid->column('mould.name');
+            $grid->column('mould.name', '模具型号');
             $grid->column('status')->using(MouldManagementModel::STATUS);
 
             $grid->column('created_at');
@@ -76,6 +79,14 @@ class MouldManagementController extends AdminController
         });
     }
 
+    public function script()
+    {
+        return <<<JS
+        console.log('所有JS脚本都加载完了');
+        // 初始化操作写在这里
+JS;
+    }
+
     /**
      * Make a form builder.
      *
@@ -83,15 +94,63 @@ class MouldManagementController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new MouldManagement(), function (Form $form) {
+        return Form::make(new  MouldManagement('mould'), function (Form $form) {
+
 
             $form->row(function (Form\Row $row) use ($form) {
-                $types = MouldModel::pluck('name', 'id');
-                $row->width(6)
-                    ->select('mould_id', '模具')
-                    ->options($types)
-                    ->default(head($types->keys()->toArray()) ?? '')
-                    ->required();
+                //模具使用不需要编辑模具
+                if ($form->isCreating()) {
+                    $types = MouldModel::pluck('name', 'id');
+                    $row->width(6)
+                        ->select('mould_id', '模具')
+                        ->options($types)
+                        ->default(head($types->keys()->toArray()) ?? '')
+                        ->required();
+                }
+                if ($form->isEditing()) {
+                    Admin::script(
+                        <<<JS
+    console.log({$row->model()->status})
+    $('.layui-layer-title').text('模具操作');
+  $('input:hidden[name="operation2"]').parent().parent().parent().hide()
+JS
+                    );
+                    $row->width(6)->text('mould_management_no')->disable();
+                    $row->width(6)->text('mould.name', '模具类型')->disable();
+                    $row->width(6)->text('', '当前状态')->value(MouldManagementModel::STATUS[$row->model()->status])->disable();
+                    $row->divider();
+
+                    //以下代码实现不了
+                    $row->html('<h4>模具操作</h4><p>');
+                    $row->divider();
+//
+                    $status = MouldManagementModel::STATUS;
+                    unset($status[$row->model()->status]);
+                    $row->width(12)->radio('operation', '操作')->options($status);
+                    $row->width(12)->radio('operation2', '操作')->options($status);
+//                    $row->radio('radio')
+//                        ->when([1, 4], function (Form $form) use($row) {
+//                            // 值为1和4时显示文本框
+//                            $form->text('text1');
+//                            $form->text('text2');
+//                            $form->text('text3');
+//                        })
+//                        ->when(2, function (Form $form) {
+//                            $form->editor('editor');
+//                        })
+//                        ->when(3, function (Form $form) {
+//                            $form->image('image');
+//                        })
+//                        ->options([
+//                            1 => '显示文本框',
+//                            2 => '显示编辑器',
+//                            3 => '显示文件上传',
+//                            4 => '还是显示文本框',
+//                        ])
+//                        ->default(1);
+                }
+
+
             });
             $form->saving(function (Form $form) {
                 if (!MouldManagement::mould_complete(MouldModel::find($form->mould_id))) {
@@ -100,14 +159,19 @@ class MouldManagementController extends AdminController
 
             });
             $form->saved(function (Form $form, $result) {
-               $mould= MouldModel::find($form->mould_id);
-                $str=(new \Overtrue\Pinyin\Pinyin)->abbr($mould->name);
-                $count = MouldManagementModel::where('mould_management_no','like',$str.'%')->where('mould_id',$form->mould_id)->count();
-                    $id=strtoupper($str.str_pad($count + 1, 6, "0", STR_PAD_LEFT));
-                $mouldmanagement=MouldManagementModel::find($result);
-                $mouldmanagement->mould_management_no=$id;
+                $mould = MouldModel::find($form->mould_id);
+                $str = (new \Overtrue\Pinyin\Pinyin)->abbr($mould->name);
+                $count = MouldManagementModel::where('mould_management_no', 'like', $str . '%')->where('mould_id', $form->mould_id)->count();
+                $id = strtoupper($str . str_pad($count + 1, 6, "0", STR_PAD_LEFT));
+                $mouldmanagement = MouldManagementModel::find($result);
+                $mouldmanagement->mould_management_no = $id;
                 $mouldmanagement->save();
             });
+
+
+            $form->display('created_at');
+            $form->display('updated_at');
+        });
 //            $form->row(function (Form\Row $row) use ($form) {
 //                $customers = CustomerRepository::pluck('name', 'id');
 //
@@ -178,10 +242,5 @@ class MouldManagementController extends AdminController
 //
 //                });
 //            }
-
-
-            $form->display('created_at');
-            $form->display('updated_at');
-        });
     }
 }

@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         Admin::js('static/fullcalendar-scheduler-5.11.2/lib/main.js');
         Admin::css('static/fullcalendar-scheduler-5.11.2/lib/main.css');
-        Admin::css('static/fullcalendar-scheduler-5.11.2/lib/locales/zh-cn.js');
+        Admin::js('static/fullcalendar-scheduler-5.11.2/lib/locales/zh-cn.js');
 
         return $content->body(admin_view('admin.index'));
 
