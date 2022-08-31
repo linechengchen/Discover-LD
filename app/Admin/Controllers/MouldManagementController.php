@@ -110,7 +110,11 @@ JS;
                 if ($form->isEditing()) {
                     Admin::script(
                         <<<JS
+
     console.log({$row->model()->status})
+    $('input[name="operation"]').on('change',function() {
+      console.log($(this).val())
+    })
     $('.layui-layer-title').text('模具操作');
   $('input:hidden[name="operation2"]').parent().parent().parent().hide()
 JS

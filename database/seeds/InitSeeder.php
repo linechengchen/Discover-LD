@@ -14,10 +14,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\BaseModel;
 use App\Models\MouldDesignModel;
 use App\Models\MouldDesignScheduleModel;
 use App\Models\MouldModel;
 use App\Models\MouldTypeModel;
+use App\Models\RoleUsersModel;
 use App\Models\WorkShopModel;
 use App\Models\WorkShopValueModel;
 use App\Repositories\MouldRepository;
@@ -211,21 +213,52 @@ class InitSeeder extends Seeder
             'username' => '18324254558',
             'password' => bcrypt('admin'),
             'name' => '正博智能机械',
+            'super_customer_id' => '1',
             'created_at' => $createdAt,
         ]);
-
+        Administrator::create([
+            'username' => '18324254559',
+            'password' => bcrypt('admin'),
+            'name' => '正博销售',
+            'super_customer_id' => '1',
+            'created_at' => $createdAt,
+        ]);
+        Administrator::create([
+            'username' => '18324254560',
+            'password' => bcrypt('admin'),
+            'name' => '正博工人',
+            'super_customer_id' => '1',
+            'created_at' => $createdAt,
+        ]);
         // create a role.
         $this->InitMouldTemplate();
         $this->InitBaseData();
+
+
         Role::create([
             'name' => 'Administrator',
             'slug' => Role::ADMINISTRATOR,
             'created_at' => $createdAt,
+            'super_customer_id' => '1',
         ]);
-
+        Role::create([
+            'name' => '销售',
+            'slug' => BaseModel::WORK_SALE,
+            'created_at' => $createdAt,
+            'super_customer_id' => '1',
+        ]);
+        Role::create([
+            'name' => '工人',
+            'slug' => BaseModel::WORK_WORKER,
+            'created_at' => $createdAt,
+            'super_customer_id' => '1',
+        ]);
         // add role to user.
         Administrator::first()->roles()->save(Role::first());
         Administrator::find(2)->roles()->save(Role::first());
+        Administrator::find(3)->roles()->save(Role::find(2));
+        Administrator::find(4)->roles()->save(Role::find(3));
+        RoleUsersModel::whereIn('role_id',[1, 2, 3])->update(['super_customer_id'=> 1]);
 
         //create a permission
 
@@ -238,6 +271,7 @@ class InitSeeder extends Seeder
                 'http_path' => '',
                 'parent_id' => 0,
                 'order' => 1,
+                'super_customer_id' => '2',
                 'created_at' => $createdAt,
             ],
             [
@@ -248,6 +282,7 @@ class InitSeeder extends Seeder
                 'http_path' => '/users*',
                 'parent_id' => 1,
                 'order' => 2,
+                'super_customer_id' => '2',
                 'created_at' => $createdAt,
             ],
             [
@@ -258,6 +293,7 @@ class InitSeeder extends Seeder
                 'http_path' => '/auth/roles*',
                 'parent_id' => 1,
                 'order' => 3,
+                'super_customer_id' => '2',
                 'created_at' => $createdAt,
             ],
             [
@@ -268,6 +304,7 @@ class InitSeeder extends Seeder
                 'http_path' => '/auth/permissions*',
                 'parent_id' => 1,
                 'order' => 4,
+                'super_customer_id' => '2',
                 'created_at' => $createdAt,
             ],
             [
@@ -278,6 +315,7 @@ class InitSeeder extends Seeder
                 'http_path' => '/auth/menu*',
                 'parent_id' => 1,
                 'order' => 5,
+                'super_customer_id' => '2',
                 'created_at' => $createdAt,
             ],
             [
@@ -288,6 +326,7 @@ class InitSeeder extends Seeder
                 'http_path' => '/auth/logs*',
                 'parent_id' => 1,
                 'order' => 6,
+                'super_customer_id' => '2',
                 'created_at' => $createdAt,
             ],
         ]);
@@ -626,14 +665,7 @@ class InitSeeder extends Seeder
                 'uri' => 'pay-method',
                 'created_at' => $createdAt,
             ],
-            [
-                'parent_id' => 22,
-                'order' => 22,
-                'title' => '员工档案',
-                'icon' => '',
-                'uri' => 'salesman',
-                'created_at' => $createdAt,
-            ],
+
             [
                 'parent_id' => 0,
                 'order' => 41,
@@ -643,7 +675,7 @@ class InitSeeder extends Seeder
                 'created_at' => $createdAt,
             ],
             [
-                'parent_id' => 43,
+                'parent_id' => 42,
                 'order' => 41,
                 'title' => '模具类型',
                 'icon' => 'feather icon-cpu',
@@ -651,7 +683,7 @@ class InitSeeder extends Seeder
                 'created_at' => $createdAt,
             ],
             [
-                'parent_id' => 43,
+                'parent_id' => 42,
                 'order' => 41,
                 'title' => '模具模板',
                 'icon' => 'feather icon-cpu',
@@ -659,7 +691,7 @@ class InitSeeder extends Seeder
                 'created_at' => $createdAt,
             ],
             [
-                'parent_id' => 43,
+                'parent_id' => 42,
                 'order' => 41,
                 'title' => '模具档案',
                 'icon' => 'feather icon-cpu',
@@ -667,7 +699,7 @@ class InitSeeder extends Seeder
                 'created_at' => $createdAt,
             ],
             [
-                'parent_id' => 43,
+                'parent_id' => 42,
                 'order' => 41,
                 'title' => '模具设计',
                 'icon' => 'feather icon-cpu',
@@ -683,7 +715,7 @@ class InitSeeder extends Seeder
                 'created_at' => $createdAt,
             ],
             [
-                'parent_id' => 48,
+                'parent_id' => 47,
                 'order' => 42,
                 'title' => '模具库存',
                 'icon' => 'feather icon-grid',
@@ -699,7 +731,15 @@ class InitSeeder extends Seeder
                 'created_at' => $createdAt,
             ],
             [
-                'parent_id' => 50,
+                'parent_id' => 49,
+                'order' => 2,
+                'title' => '员工管理',
+                'icon' => 'fa-calendar',
+                'uri' => 'worksman',
+                'created_at' => $createdAt,
+            ],
+            [
+                'parent_id' => 49,
                 'order' => 2,
                 'title' => '车间管理',
                 'icon' => 'fa-calendar',
@@ -707,7 +747,7 @@ class InitSeeder extends Seeder
                 'created_at' => $createdAt,
             ],
             [
-                'parent_id' => 50,
+                'parent_id' => 49,
                 'order' => 3,
                 'title' => '班组管理',
                 'icon' => 'fa-calendar',

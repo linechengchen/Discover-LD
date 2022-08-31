@@ -31,6 +31,15 @@ class BaseModel extends Model
 
     protected $guarded = ['id'];
 
+
+    const WORK_SALE = 1;
+    const WORK_WORKER = 2;
+    const WORK_TYPE = [
+        self::WORK_SALE => '销售员',
+        self::WORK_WORKER => '工人',
+
+    ];
+
     const STATUS_NO = 0;
     const STATUS_OK = 1;
 

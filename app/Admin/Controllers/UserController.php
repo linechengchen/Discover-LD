@@ -23,7 +23,7 @@ class UserController extends AdminController
 
     protected function grid()
     {
-        return Grid::make(\App\Models\AdministratorModel::with(['roles'])->where('super_customer_id',Admin::user()->id), function (Grid $grid) {
+        return Grid::make(\App\Models\AdministratorModel::with(['roles'])->where('super_customer_id',Admin::user()->super_customer_id), function (Grid $grid) {
             $grid->column('id', 'ID')->sortable();
             $grid->column('username');
             $grid->column('name');

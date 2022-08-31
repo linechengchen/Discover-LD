@@ -14,6 +14,9 @@ class MouldDesignModel extends BaseModel
 
 
     protected $table = 'mould_design';
+    public function mould(){
+        return $this->belongsTo(MouldModel::class);
+    }
 
 
 }

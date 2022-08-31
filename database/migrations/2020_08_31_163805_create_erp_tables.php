@@ -180,8 +180,9 @@ class CreateErpTables extends Migration
             $table->string('name', 128)->default('')->comment('属性名称');
             $table->string('link', 64)->default('')->comment('联系人');
             $table->unsignedTinyInteger('pay_method')->default(0)->comment('支付方式');
+            $table->integer('admin_users_id')->comment('客户归属id')->nullable();
             $table->string('phone', 11)->default('')->comment('手机号码');
-            $table->string('other', 500)->default('')->comment('备注');
+            $table->string('other', 500)->default('')->nullable()->comment('备注');
             $table->softDeletes();
             $table->bigInteger('super_customer_id')->nullable();
 

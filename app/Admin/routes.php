@@ -34,8 +34,13 @@ Route::group([
     $router->get('api/get-customer-address', 'ApiController@getCustomerAddress')->name('api.customer.address.find');
     $router->get('api/get-customer-drawee', 'ApiController@getCustomerDrawee')->name('api.customer.drawee.find');
 
+
+    //基础数据
     $router->get('team', 'TeamController@index');
     $router->resource('work-shop', 'WorkShopController');
+    $router->resource('worksman', 'UserController');
+
+
 
     $router->resource('users', 'UserController');
     $router->resource('mould-template', 'MouldTemplateController');
@@ -61,7 +66,6 @@ Route::group([
     $router->resource('sale-out-items', 'SaleOutItemController');
     $router->resource('customers', 'CustomerController');
     $router->resource('pay-method', 'PayMethodController');
-    $router->resource('salesman', 'UserController');
 
     $router->resource('sale-out-batchs', 'SaleOutBatchController');
     $router->resource('drawees', 'DraweeController');

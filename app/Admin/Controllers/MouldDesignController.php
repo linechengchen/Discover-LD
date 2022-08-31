@@ -38,7 +38,7 @@ class MouldDesignController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new MouldDesign(), function (Grid $grid) {
+        return Grid::make(new MouldDesign('mould'), function (Grid $grid) {
             $grid->column('id')->sortable();
             $grid->column('mould.name','模具名称');
             $grid->column('schedule_type')->using(BaseModel::SCHEDULE_TYPE);
@@ -47,6 +47,7 @@ class MouldDesignController extends AdminController
                 ->display('查看')
                 ->expand(MouldDesignSchedule::make());
             $grid->column('created_at');
+            $grid->disableEditButton();
 //            $grid->actions([new CopyMouldTemplate(MouldTemplateModel::class)]);
         });
     }

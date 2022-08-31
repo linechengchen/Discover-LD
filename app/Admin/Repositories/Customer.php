@@ -17,6 +17,7 @@ namespace App\Admin\Repositories;
 use App\Models\CustomerAddressModel;
 use App\Models\CustomerModel as Model;
 use App\Models\DraweeModel;
+use Dcat\Admin\Models\Administrator;
 use Dcat\Admin\Repositories\EloquentRepository;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -31,6 +32,7 @@ class Customer extends EloquentRepository
      * @var string
      */
     protected $eloquentClass = Model::class;
+
 
     /**
      * @return Collection

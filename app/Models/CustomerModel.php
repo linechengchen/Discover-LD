@@ -14,6 +14,7 @@
 
 namespace App\Models;
 
+use Dcat\Admin\Models\Administrator;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -60,7 +61,9 @@ class CustomerModel extends BaseModel
     const PAY_CASH = 0;
     const PAY_WECHAT = 1;
     const PAY_ZFB = 2;
-
+    public function admin_users(){
+        return $this->hasOne(AdministratorModel::class, 'id','admin_users_id');
+    }
     const PAY = [
         self::PAY_CASH   => '现金',
         self::PAY_WECHAT => '微信',

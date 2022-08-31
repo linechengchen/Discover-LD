@@ -23,6 +23,7 @@ if (!file_exists('self')) {
     }
 }
 
+
 if (!file_exists("lower_pinyin_abbr")) {
     /**
      * @param string $str

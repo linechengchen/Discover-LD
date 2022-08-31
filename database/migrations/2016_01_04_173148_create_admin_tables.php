@@ -25,16 +25,20 @@ class CreateAdminTables extends Migration
     {
         Schema::create($this->config('database.users_table'), function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('super_customer_id')->nullable();
             $table->string('username', 120)->unique();
             $table->string('password', 80);
             $table->string('name');
             $table->string('avatar')->nullable();
+
             $table->string('remember_token', 100)->nullable();
             $table->timestamps();
         });
 
         Schema::create($this->config('database.roles_table'), function (Blueprint $table) {
+
             $table->bigIncrements('id');
+            $table->bigInteger('super_customer_id')->nullable();
             $table->string('name', 50);
             $table->string('slug', 50)->unique();
             $table->timestamps();
@@ -42,6 +46,7 @@ class CreateAdminTables extends Migration
 
         Schema::create($this->config('database.permissions_table'), function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('super_customer_id')->nullable();
             $table->string('name', 50);
             $table->string('slug', 50)->unique();
             $table->string('http_method')->nullable();
@@ -53,6 +58,7 @@ class CreateAdminTables extends Migration
 
         Schema::create($this->config('database.menu_table'), function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('super_customer_id')->nullable();
             $table->bigInteger('parent_id')->default(0);
             $table->integer('order')->default(0);
             $table->string('title', 50);
@@ -63,6 +69,7 @@ class CreateAdminTables extends Migration
         });
 
         Schema::create($this->config('database.role_users_table'), function (Blueprint $table) {
+            $table->bigInteger('super_customer_id')->nullable();
             $table->bigInteger('role_id');
             $table->bigInteger('user_id');
             $table->unique(['role_id', 'user_id']);
@@ -70,6 +77,7 @@ class CreateAdminTables extends Migration
         });
 
         Schema::create($this->config('database.role_permissions_table'), function (Blueprint $table) {
+            $table->bigInteger('super_customer_id')->nullable();
             $table->bigInteger('role_id');
             $table->bigInteger('permission_id');
             $table->unique(['role_id', 'permission_id']);
@@ -77,6 +85,7 @@ class CreateAdminTables extends Migration
         });
 
         Schema::create($this->config('database.role_menu_table'), function (Blueprint $table) {
+            $table->bigInteger('super_customer_id')->nullable();
             $table->bigInteger('role_id');
             $table->bigInteger('menu_id');
             $table->unique(['role_id', 'menu_id']);
@@ -84,6 +93,7 @@ class CreateAdminTables extends Migration
         });
 
         Schema::create($this->config('database.permission_menu_table'), function (Blueprint $table) {
+            $table->bigInteger('super_customer_id')->nullable();
             $table->bigInteger('permission_id');
             $table->bigInteger('menu_id');
             $table->unique(['permission_id', 'menu_id']);
