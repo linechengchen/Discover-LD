@@ -49,7 +49,7 @@ HTML;
     protected function parameters(): array
     {
         return [
-            'url'           => route('order.print', [
+            'url'           => admin_route('order.print', [
                 'ids' => $this->getOrderId(),
                 'model' => $this->getModel(),
                 'slug' => admin_controller_slug(),

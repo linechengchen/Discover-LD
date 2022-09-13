@@ -7,8 +7,10 @@ use App\Admin\Repositories\Mould;
 use App\Admin\Repositories\MouldDesign;
 use App\Admin\Repositories\MouldDesignSchedule;
 use App\Admin\Repositories\MouldType;
+use App\Models\BaseModel;
 use App\Models\MouldDesignModel;
 use App\Models\MouldDesignScheduleModel;
+use App\Models\MouldModel;
 use App\Models\MouldTemplateModel;
 use App\Models\MouldTemplateValueModel;
 use App\Repositories\CustomerRepository;
@@ -22,6 +24,7 @@ use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Qiniu\Http\Request;
+use function Psy\debug;
 
 class MouldDesignScheduleController extends AdminController
 {
@@ -41,7 +44,6 @@ class MouldDesignScheduleController extends AdminController
     protected function grid()
     {
         return Grid::make(new MouldDesignSchedule(), function (Grid $grid) {
-
             $grid->column('admin');
             $grid->column('name');
             $grid->disablePagination();
@@ -111,6 +113,10 @@ class MouldDesignScheduleController extends AdminController
                             ->sum('step');
                     }
                     $data->update(['schedule'=>$count]);
+                    if ($count==100){
+                       MouldModel::find($data->mould_id)->update(['type'=>MouldModel::TYPE_COMPLETE]);
+
+                    }
                 }
             });
 

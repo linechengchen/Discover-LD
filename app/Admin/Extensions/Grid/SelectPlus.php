@@ -31,16 +31,16 @@ $('.{$this->selector}').off('change').select2().on('change', function(){
             _method: 'PUT'
         },
         reload = '{$refresh}';
-    
+
     if (name.indexOf('.') === -1) {
         data[name] = value;
     } else {
         name = name.split('.');
-        
+
         data[name[0]] = {};
         data[name[0]][name[1]] = value;
     }
-    
+
     Dcat.NP.start();
     $.ajax({
         url: url,

@@ -17,6 +17,7 @@ namespace Database\Seeders;
 use App\Models\BaseModel;
 use App\Models\MouldDesignModel;
 use App\Models\MouldDesignScheduleModel;
+use App\Models\MouldManagementModel;
 use App\Models\MouldModel;
 use App\Models\MouldTypeModel;
 use App\Models\RoleUsersModel;
@@ -68,7 +69,7 @@ class InitSeeder extends Seeder
 
         $mt = MouldTemplateModel::create([
             'name' => "模板",
-            'super_customer_id' => 2,
+            'super_customer_id' => 1,
             'created_at' => $createdAt
         ]);
         MouldTemplateValueModel::create([
@@ -95,31 +96,16 @@ class InitSeeder extends Seeder
         $mould_type = MouldTypeModel::create([
             'name' => '复杂'
         ]);
-        $mould = MouldModel::create([
-            'name' => '最初的模具',
-            'mould_type_id' => 1,
-            'mould_no' => 'MD000001',
-            'manufacturer' => '正博',
-            'customer_id' => '1',
-            'early_warning_mode' => 1,
-            'die_life' => 1000,
-            'super_customer_id' => 2,
-            'type' => 1,
-            'mould_template_id' => null,
-            'schedule_type' => 1,
-            'lower_limit' => 10,
-        ]);
-
 
         $mould2 = MouldModel::create([
             'name' => '标准间隔时间模具',
             'mould_type_id' => 2,
-            'mould_no' => 'MD000002',
+            'mould_no' => 'MD000001',
             'manufacturer' => '正博',
             'customer_id' => '1',
             'early_warning_mode' => 2,
             'die_life' => 1000,
-            'super_customer_id' => 2,
+            'super_customer_id' => 1,
             'type' => 2,
             'mould_template_id' => 1,
             'schedule_type' => 2,
@@ -149,14 +135,15 @@ class InitSeeder extends Seeder
 
 //        计划完成时间模具
         $mould3 = MouldModel::create([
+
             'name' => '计划完成时间模具',
             'mould_type_id' => 2,
-            'mould_no' => 'MD000003',
+            'mould_no' => 'MD000002',
             'manufacturer' => '正博',
             'customer_id' => '1',
             'early_warning_mode' => 2,
             'die_life' => 1000,
-            'super_customer_id' => 2,
+            'super_customer_id' => 1,
             'type' => 2,
             'mould_template_id' => 1,
             'schedule_type' => 1,
@@ -183,6 +170,89 @@ class InitSeeder extends Seeder
                 'type' => $item->schedule_type,
             ]);
         }
+
+        $mould = MouldModel::create([
+            'name' => '模具A',
+            'mould_type_id' => 1,
+            'mould_no' => 'MD000003',
+            'manufacturer' => '正博',
+            'customer_id' => '1',
+            'early_warning_mode' => 1,
+            'die_life' => 1000,
+            'super_customer_id' => 1,
+            'type' => 1,
+            'mould_template_id' => null,
+            'schedule_type' => 1,
+            'lower_limit' => 10,
+        ]);
+        $mould = MouldModel::create([
+            'name' => '模具B',
+            'mould_type_id' => 2,
+            'mould_no' => 'MD000004',
+            'manufacturer' => '正博',
+            'customer_id' => '1',
+            'early_warning_mode' => 1,
+            'die_life' => 1000,
+            'super_customer_id' => 1,
+            'type' => 1,
+            'mould_template_id' => null,
+            'schedule_type' => 1,
+            'lower_limit' => 10,
+        ]);
+        $mould = MouldModel::create([
+            'name' => '模具C',
+            'mould_type_id' => 1,
+            'mould_no' => 'MD000005',
+            'manufacturer' => '正博',
+            'customer_id' => '1',
+            'early_warning_mode' => 1,
+            'die_life' => 1000,
+            'super_customer_id' => 1,
+            'type' => 1,
+            'mould_template_id' => null,
+            'schedule_type' => 1,
+            'lower_limit' => 10,
+        ]);
+        $mould = MouldModel::create([
+            'name' => '模具D',
+            'mould_type_id' => 2,
+            'mould_no' => 'MD000006',
+            'manufacturer' => '正博',
+            'customer_id' => '1',
+            'early_warning_mode' => 1,
+            'die_life' => 1000,
+            'super_customer_id' => 1,
+            'type' => 1,
+            'mould_template_id' => null,
+            'schedule_type' => 1,
+            'lower_limit' => 10,
+        ]);
+
+        $mouldManagement = MouldManagementModel::create([
+            'super_customer_id' => '1',
+            'mould_id' => 3,
+            'mould_management_no' => 'MJ000001',
+            'status' => '1',
+        ]);
+        $mouldManagement = MouldManagementModel::create([
+            'super_customer_id' => '1',
+            'mould_id' => 4,
+            'mould_management_no' => 'MJ000002',
+            'status' => '1',
+        ]);
+        $mouldManagement = MouldManagementModel::create([
+            'super_customer_id' => '1',
+            'mould_id' => 5,
+            'mould_management_no' => 'MJ000003',
+            'status' => '1',
+        ]);
+        $mouldManagement = MouldManagementModel::create([
+            'super_customer_id' => '1',
+            'mould_id' => 6,
+            'mould_management_no' => 'MJ000004',
+            'status' => '1',
+        ]);
+
     }
 
     public function admin()
@@ -723,6 +793,15 @@ class InitSeeder extends Seeder
                 'created_at' => $createdAt,
             ],
             [
+                'parent_id' => 47,
+                'order' => 42,
+                'title' => '模具组合',
+                'icon' => 'feather icon-grid',
+                'uri' => 'mould-management-make',
+                'created_at' => $createdAt,
+            ],
+
+            [
                 'parent_id' => 0,
                 'order' => 1,
                 'title' => '基础数据',
@@ -731,7 +810,7 @@ class InitSeeder extends Seeder
                 'created_at' => $createdAt,
             ],
             [
-                'parent_id' => 49,
+                'parent_id' => 50,
                 'order' => 2,
                 'title' => '员工管理',
                 'icon' => 'fa-calendar',
@@ -739,7 +818,7 @@ class InitSeeder extends Seeder
                 'created_at' => $createdAt,
             ],
             [
-                'parent_id' => 49,
+                'parent_id' => 50,
                 'order' => 2,
                 'title' => '车间管理',
                 'icon' => 'fa-calendar',
@@ -747,7 +826,7 @@ class InitSeeder extends Seeder
                 'created_at' => $createdAt,
             ],
             [
-                'parent_id' => 49,
+                'parent_id' => 50,
                 'order' => 3,
                 'title' => '班组管理',
                 'icon' => 'fa-calendar',

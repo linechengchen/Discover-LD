@@ -28,7 +28,7 @@ Route::group([
 
 
     $router->get('api/get-attr-value', 'ApiController@getAttrValue')->name('api.attrvalue.find');
-    $router->get('api/get-product-unit', 'ApiController@getUnitByProductId')->name('api.productunit.find');
+    $router->get('api/get-product-unit', 'ApiController@getUnitByProductId')->name('productunit-find');
     $router->get('api/get-product', 'ApiController@getProductInfo')->name('api.product.find');
     $router->post('api/with/order', 'ApiController@withOrder')->name('api.with.order');
     $router->get('api/get-customer-address', 'ApiController@getCustomerAddress')->name('api.customer.address.find');
@@ -46,6 +46,7 @@ Route::group([
     $router->resource('mould-template', 'MouldTemplateController');
     $router->resource('mould-design', 'MouldDesignController');
     $router->resource('mould-management', 'MouldManagementController');
+    $router->resource('mould-management-make', 'MouldManagementMakeController');
 
     $router->resource('attrs', 'AttrController');
     $router->resource('products', 'ProductController');

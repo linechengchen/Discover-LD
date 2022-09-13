@@ -41,6 +41,7 @@ class UnitRepository extends BaseRepository
      */
     public function getUnitByProductId(int $product_id): self
     {
+
         $product = ProductModel::findOrFail($product_id);
         $this->textid_array = collect([$product->unit->toArray()]);
         return $this;

@@ -39,6 +39,8 @@ class MouldDesignController extends AdminController
     protected function grid()
     {
         return Grid::make(new MouldDesign('mould'), function (Grid $grid) {
+
+            $grid->disableCreateButton();
             $grid->column('id')->sortable();
             $grid->column('mould.name','模具名称');
             $grid->column('schedule_type')->using(BaseModel::SCHEDULE_TYPE);
@@ -48,7 +50,17 @@ class MouldDesignController extends AdminController
                 ->expand(MouldDesignSchedule::make());
             $grid->column('created_at');
             $grid->disableEditButton();
+            $grid->filter(function (Grid\Filter $filter) {
+                // 更改为 panel 布局
+                $filter->panel();
+                $schedule_type=BaseModel::SCHEDULE_TYPE;
+                    unset($schedule_type[0]);
+                // 注意切换为panel布局方式时需要重新调整表单字段的宽度
+                $filter->in('schedule_type')->radio($schedule_type)->width(6);
+                $filter->like('mould.name','模具档案名称')->width(6);
+            });
 //            $grid->actions([new CopyMouldTemplate(MouldTemplateModel::class)]);
+
         });
     }
 

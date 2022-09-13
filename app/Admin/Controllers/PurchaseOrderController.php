@@ -22,7 +22,8 @@ use App\Admin\Repositories\PurchaseOrder;
 use App\Models\ProductModel;
 use App\Models\PurchaseOrderModel;
 use App\Repositories\SupplierRepository;
-use App\Admin\Forms\SelfForm as Form;
+use Dcat\Admin\Form;
+use Dcat\Admin\Form\NestedForm;
 use Dcat\Admin\Grid;
 use Illuminate\Support\Fluent;
 
@@ -107,8 +108,8 @@ class PurchaseOrderController extends OrderController
     protected function creating(Form &$form): void
     {
         $form->row(function (Form\Row $row) {
-            $row->hasMany('items', '', function (Form\NestedForm $table) {
-                $table->select('product_id', '名称')->options(ProductModel::pluck('name', 'id'))->loadpku(route('api.product.find'))->required();
+            $row->hasMany('items', '', function (NestedForm $table) {
+                $table->select('product_id', '名称')->options(ProductModel::pluck('name', 'id'))->loadpku(admin_route('api.product.find'))->required();
                 $table->ipt('unit', '单位')->rem(3)->default('-')->disable();
                 $table->ipt('type', '类型')->rem(5)->default('-')->disable();
                 $table->select('sku_id', '属性选择')->options()->required();
@@ -126,13 +127,13 @@ class PurchaseOrderController extends OrderController
         $grid->column('sku.product.name', '产品名称');
         $grid->column('sku.product.unit.name', '单位');
         $grid->column('sku.product.type_str', '类型');
-        $grid->column('sku_id', '属性')->if(function () use ($order) {
-            return $order->review_status === PurchaseOrderModel::REVIEW_STATUS_OK;
-        })->display(function () {
-            return $this->sku['attr_value_ids_str'] ?? '';
-        })->else()->selectplus(function (Fluent $fluent) {
-            return $fluent->sku['product']['sku_key_value'];
-        });
+//        $grid->column('sku_id', '属性')->if(function () use ($order) {
+//            return $order->review_status === PurchaseOrderModel::REVIEW_STATUS_OK;
+//        })->display(function () {
+//            return $this->sku['attr_value_ids_str'] ?? '';
+//        })->else()->selectplus(function (Fluent $fluent) {
+//            return $fluent->sku['product']['sku_key_value'];
+//        });
         $grid->column('percent', '含绒量')->if(function () use ($order) {
             return $order->review_status !== PurchaseOrderModel::REVIEW_STATUS_OK;
         })->edit();

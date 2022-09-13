@@ -45,8 +45,7 @@ HTML;
 
     public function script()
     {
-        $url = route('products.index', [
-            Grid::IFRAME_QUERY_NAME => 1,
+        $url = admin_route('products.index', [
             'order_model' => $this->getModel(),
             'order_id' => $this->getOrderId(),
         ]);

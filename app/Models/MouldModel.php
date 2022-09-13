@@ -7,10 +7,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class MouldModel extends Model
+class MouldModel extends BaseModel
 {
 	use HasDateTimeFormatter;
     use SoftDeletes;
+
+    const TYPE_COMPLETE = 1;
+    const TYPE_DESIGN = 2;
+
+    const TYPE=[
+        self::TYPE_DESIGN=> '设计模具',
+        self::TYPE_COMPLETE=> '成品模具',
+    ];
 
 
     protected $table = 'mould';

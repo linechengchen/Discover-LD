@@ -24,7 +24,7 @@ class Input extends Text
     {
         $this->initPlainInput();
         $this->defaultAttribute('type', 'text')
-            ->defaultAttribute('id', $this->id)
+//            ->defaultAttribute('id', $this->id)
             ->defaultAttribute('name', $this->getElementName())
             ->defaultAttribute('value', old($this->column, $this->value()))
             ->defaultAttribute('class', 'form-control '.$this->getElementClassString())

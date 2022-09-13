@@ -16,7 +16,7 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Extensions\Expand\AttrValue;
 use App\Admin\Repositories\Attr;
-use App\Admin\Forms\SelfForm as Form;
+use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 

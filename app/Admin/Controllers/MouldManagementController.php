@@ -23,6 +23,7 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\DB;
 use Overtrue\Pinyin\Pinyin;
 
 class MouldManagementController extends AdminController
@@ -42,8 +43,8 @@ class MouldManagementController extends AdminController
             $grid->column('mould.name', '模具型号');
             $grid->column('status')->using(MouldManagementModel::STATUS);
 
-            $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
+//            $grid->column('created_at');
+//            $grid->column('updated_at')->sortable();
             $grid->showColumnSelector();
 
 //            $grid->filter(function (Grid\Filter $filter) {
@@ -165,8 +166,7 @@ JS
             $form->saved(function (Form $form, $result) {
                 $mould = MouldModel::find($form->mould_id);
                 $str = (new \Overtrue\Pinyin\Pinyin)->abbr($mould->name);
-                $count = MouldManagementModel::where('mould_management_no', 'like', $str . '%')->where('mould_id', $form->mould_id)->count();
-                $id = strtoupper($str . str_pad($count + 1, 6, "0", STR_PAD_LEFT));
+                $id = strtoupper($str . str_pad(DB::table('mould_management')->count(), 6, "0", STR_PAD_LEFT));
                 $mouldmanagement = MouldManagementModel::find($result);
                 $mouldmanagement->mould_management_no = $id;
                 $mouldmanagement->save();

@@ -17,9 +17,26 @@ class CreateMouldManagementTable extends Migration
             $table->id();
             $table->integer('super_customer_id')->nullable();
             $table->integer('mould_id')->nullable()->comment('模具档案id');
-            $table->integer('mould_type_id')->nullable()->comment('模具类型');
             $table->string('mould_management_no')->nullable()->comment('模具编号');
             $table->integer('status')->default(1)->comment('模具状态1使用中2闲置中3维修中4已报废');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::create('mould_management_make', function (Blueprint $table) {
+            $table->id();
+            $table->integer('super_customer_id')->nullable();
+            $table->string('name')->unique()->comment('模具组名称');
+            $table->string('remark')->comment('模具套件备注')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        Schema::create('mould_management_make_value', function (Blueprint $table) {
+            $table->id();
+            $table->string('mould_management_make_id')->nullable()->comment('模具组id');
+            $table->integer('super_customer_id')->nullable();
+            $table->string('mould_id')->nullable()->comment('模具id');
+            $table->string('remark')->comment('模具套件备注')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,5 +50,7 @@ class CreateMouldManagementTable extends Migration
     public function down()
     {
         Schema::dropIfExists('mould_management');
+        Schema::dropIfExists('mould_management_group');
+        Schema::dropIfExists('mould_management_group_value');
     }
 }

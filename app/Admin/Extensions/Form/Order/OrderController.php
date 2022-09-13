@@ -74,11 +74,11 @@ abstract class OrderController extends AdminController
     {
         if (\PHP_SAPI !== 'cli') {
             $this->style();
-            $this->item_name        = $this->getItemName();
-            $this->oredr_model      = $this->getOrderModel();
+            $this->item_name = $this->getItemName();
+            $this->oredr_model = $this->getOrderModel();
             $this->order_repository = $this->getOrderRepository();
-            $this->item_model       = $this->getItemModel();
-            $this->item_repository  = $this->getItemRepository();
+            $this->item_model = $this->getItemModel();
+            $this->item_repository = $this->getItemRepository();
         }
     }
 
@@ -98,8 +98,8 @@ CSS
     }
 
     /**
-     * @throws Exception
      * @return string
+     * @throws Exception
      */
     public function getOrderModel(): string
     {
@@ -107,8 +107,8 @@ CSS
     }
 
     /**
-     * @throws Exception
      * @return Repository
+     * @throws Exception
      */
     public function getOrderRepository(): Repository
     {
@@ -117,8 +117,8 @@ CSS
     }
 
     /**
-     * @throws Exception
      * @return string
+     * @throws Exception
      */
     public function getItemModel(): string
     {
@@ -126,8 +126,8 @@ CSS
     }
 
     /**
-     * @throws Exception
      * @return Repository
+     * @throws Exception
      */
     public function getItemRepository(): Repository
     {
@@ -138,8 +138,8 @@ CSS
     /**
      * @param string $type
      * @param bool $is_oredr
-     * @throws Exception
      * @return string
+     * @throws Exception
      */
     protected function getClassNameByType(string $type, bool $is_oredr = true): string
     {
@@ -157,7 +157,7 @@ CSS
         $controller = $is_oredr ? admin_controller_name() : $this->item_name;
 
         $className = Str::replaceFirst('?', $controller, $subject);
-        if (! class_exists($className)) {
+        if (!class_exists($className)) {
             throw new Exception(Str::replaceFirst('?', $className, "? 不存在！"));
         }
         return $className;
@@ -182,10 +182,23 @@ CSS
             ->body($this->form()->edit($id))
             ->body($this->items($id))->full();
     }
-
     /**
-     * @throws \Throwable
+     * @param int $id
+     * @return Grid
+     */
+    public function items(int $id): Grid
+    {
+        return Grid::make($this->item_repository, function (Grid $grid) use ($id) {
+            $grid->setName(Str::random(16));
+            $grid->model()->resetOrderBy();
+            $grid->model()->where('order_id', $id);
+            $this->setItems($grid);
+            $this->setItemsCommon($grid);
+        });
+    }
+    /**
      * @return mixed
+     * @throws \Throwable
      */
     public function store()
     {
@@ -196,8 +209,8 @@ CSS
 
     /**
      * @param int $id
-     * @throws \Throwable
      * @return \Illuminate\Http\Response|mixed
+     * @throws \Throwable
      */
     public function update($id)
     {
@@ -233,7 +246,7 @@ CSS
         });
         $form->disableFooter();
         $form->disableHeader();
-        $form->disableAjaxSubmit();
+        $form->ajax(false);
     }
 
     /**
@@ -251,20 +264,7 @@ CSS
      */
     abstract protected function setItems(Grid &$grid): void;
 
-    /**
-     * @param int $id
-     * @return Grid
-     */
-    public function items(int $id): Grid
-    {
-        return Grid::make($this->item_repository, function (Grid $grid) use ($id) {
-            $grid->setName(Str::random(16));
-            $grid->model()->resetOrderBy();
-            $grid->model()->where('order_id', $id);
-            $this->setItems($grid);
-            $this->setItemsCommon($grid);
-        })->resource(Str::of($this->item_name)->kebab()->plural());
-    }
+
 
     /**
      * @param Grid $grid

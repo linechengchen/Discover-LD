@@ -51,6 +51,7 @@ class ApiController extends Controller
     public function getUnitByProductId(Request $request, UnitRepository $repository): JsonResponse
     {
         $product_id = $request->get('q');
+
         $data       = $repository->getUnitByProductId($product_id)->textIdtoArray('id', 'name');
         return Response::json($data);
     }
