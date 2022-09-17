@@ -23,7 +23,7 @@ use App\Models\PositionModel;
 use App\Models\ProductModel;
 use App\Models\PurchaseOrderModel;
 use App\Repositories\SupplierRepository;
-use App\Admin\Forms\SelfForm as Form;
+use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Illuminate\Support\Fluent;
 

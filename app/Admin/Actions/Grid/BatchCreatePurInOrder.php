@@ -34,7 +34,7 @@ HTML;
 
     public function script()
     {
-        $url = route('purchase-orders.index', [Grid::IFRAME_QUERY_NAME => 1]);
+        $url = admin_route('purchase-orders.index');
         return <<<JS
         $("#batch-purinorder-create-select-resourc").on("click",function(){
             var url = "{$url}";
