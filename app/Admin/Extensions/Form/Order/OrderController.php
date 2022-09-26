@@ -189,6 +189,7 @@ CSS
     public function items(int $id): Grid
     {
         return Grid::make($this->item_repository, function (Grid $grid) use ($id) {
+
             $grid->setName(Str::random(16));
             $grid->model()->resetOrderBy();
             $grid->model()->where('order_id', $id);
@@ -246,7 +247,7 @@ CSS
         });
         $form->disableFooter();
         $form->disableHeader();
-        $form->ajax(false);
+        $form->ajax();
     }
 
     /**

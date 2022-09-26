@@ -16,9 +16,44 @@ namespace App\Admin\Extensions\Grid;
 
 use Dcat\Admin\Admin;
 use Dcat\Admin\Grid\Displayers\Select;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Fluent;
 
 class SelectPlus extends Select
 {
+    public function display($options = [], $refresh = false)
+
+    {
+
+        if ($options instanceof \Closure) {
+
+            if ($this->row instanceof Arrayable) {
+                $this->row = $this->row->toArray();
+            }
+
+            $this->row = new Fluent($this->row);
+            $options = $options->call($this, $this->row);
+
+        }
+
+
+
+
+        return Admin::view('admin::grid.displayer.select', [
+
+            'column'  => $this->column->getName(),
+
+            'value'   => $this->value,
+
+            'url'     => $this->url(),
+
+            'options' => $options,
+
+            'refresh' => $refresh,
+
+        ]);
+
+    }
     protected function addScript($refresh)
     {
         $script = <<<JS

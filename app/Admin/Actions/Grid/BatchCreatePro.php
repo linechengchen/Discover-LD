@@ -48,6 +48,7 @@ HTML;
         $url = admin_route('products.index', [
             'order_model' => $this->getModel(),
             'order_id' => $this->getOrderId(),
+            'iFrameGrid' =>1,
         ]);
 
         return <<<JS

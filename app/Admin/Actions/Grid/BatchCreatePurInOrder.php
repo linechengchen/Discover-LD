@@ -34,7 +34,8 @@ HTML;
 
     public function script()
     {
-        $url = admin_route('purchase-orders.index');
+        $url = admin_route('purchase-orders.index',['iFrameGrid'=>1]);
+
         return <<<JS
         $("#batch-purinorder-create-select-resourc").on("click",function(){
             var url = "{$url}";

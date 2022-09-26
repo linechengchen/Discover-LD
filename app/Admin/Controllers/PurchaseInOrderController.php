@@ -117,11 +117,13 @@ class PurchaseInOrderController extends OrderController
         $grid->column('sku.product.unit.name', '单位');
         $grid->column('sku.product.type_str', '类型');
 
-        $grid->column('sku_id', '属性')->if(function () use ($order,$review_statu_ok) {
+        $grid->column('sku_id', '属性')->if(
+            function () use ($order,$review_statu_ok) {
             return $order->review_status === $review_statu_ok;
         })->display(function () {
             return $this->sku['attr_value_ids_str'] ?? '';
         })->else()->selectplus(function (Fluent $fluent) {
+
             return $fluent->sku['product']['sku_key_value'];
         });
 

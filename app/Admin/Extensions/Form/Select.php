@@ -29,26 +29,26 @@ class Select
     {
         Form\Field\Select::macro('with_order', function () {
             $controller = admin_controller_name();
-            $url = route('api.with.order');
+            $url = admin_route('api.with.order');
             $script = <<<JS
 $(document).off('change', "{$this->getElementClassSelector()}");
 $(document).on('change', "{$this->getElementClassSelector()}", function () {
-    
+
             if (String(this.value) !== '0' && ! this.value) {
                 return;
             }
             var order_no = $('input[name="order_no"]').val();
             var with_order_id = this.value;
             var with_order_order = $(this).find('option:selected').text();
-            
-            
+
+
             data = {
                 _token: Dcat.token,
                 order_no: order_no,
                 with_order_id: with_order_id,
                 func: "{$controller}",
             }
-            
+
             Dcat.confirm('确认关联单据'+with_order_order+'吗？', null, function () {
                 Dcat.NP.start();
                 $.ajax({
@@ -70,7 +70,7 @@ $(document).on('change', "{$this->getElementClassSelector()}", function () {
                             Dcat.NP.done();
                         }
                     });
-                   
+
             });
 });
 JS;
@@ -96,17 +96,17 @@ $(document).on('change', "{$this->getElementClassSelector()}", function () {
      var unit = $(this).closest('.fields-group').find(".$unitClass");
      var sku_id = $(this).closest('.fields-group').find(".$skuIdClass");
      var type = $(this).closest('.fields-group').find(".$typeClass");
-  
+
 
     if (String(this.value) !== '0' && ! this.value) {
         return;
     }
-    
+
     $.ajax("$sourceUrl?q="+this.value).then(function (data) {
         unit.val(data.data.unit);
         type.val(data.data.type_str);
         sku_id.find("option").remove();
-        
+
         $(sku_id).select2({
             data: $.map(data.data.product_attr, function (d) {
                 d.id = d.id;

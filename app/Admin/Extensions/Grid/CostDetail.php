@@ -29,7 +29,7 @@ class CostDetail extends LazyRenderable
             ->get()
             ->transform(function (CostItemModel $item, int $key) {
                 $showBtn = "no";
-                $url = ($item->cost_type === CostItemModel::COST_TYPE_SALE) ? route('sale-out-orders.edit', $item->with_id) : route('purchase-in-orders.edit', $item->with_id);
+                $url = ($item->cost_type === CostItemModel::COST_TYPE_SALE) ? admin_route('sale-out-orders.edit', $item->with_id) : admin_route('purchase-in-orders.edit', $item->with_id);
                 $title = ($item->cost_type === CostItemModel::COST_TYPE_SALE) ? '客户出货单' : '采购入库单';
                 return [
                     "<a class='edit-cost-with-order' data-title='{$title}' data-show-btn='{$showBtn}' href='javascript:void(0)' data-action=".$url.">$item->with_order_no</a>",
